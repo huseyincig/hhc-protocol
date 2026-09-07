@@ -1,0 +1,70 @@
+{
+  "name": "shell_exec",
+  "title": "Remote Shell",
+  "description": "Runs a shell command on an explicitly selected HHC client. client_id is mandatory; never infer a host from a default when managing multiple hosts. High-risk operation: executes arbitrary commands on the host. User confirmation is recommended before execution.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "client_id",
+      "command"
+    ],
+    "properties": {
+      "client_id": {
+        "type": "string",
+        "pattern": "^hhc_[0-9a-f]{64}$",
+        "minLength": 68,
+        "maxLength": 68
+      },
+      "command": {
+        "type": "string"
+      },
+      "cwd": {
+        "type": "string",
+        "description": "Optional absolute working directory. When omitted, HHC uses the target host canonical runtime root."
+      },
+      "timeout_seconds": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 3600,
+        "default": 30
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": [
+          "completed",
+          "failed"
+        ]
+      },
+      "tool": {
+        "type": "string"
+      },
+      "client_id": {
+        "type": "string"
+      },
+      "exit_code": {
+        "type": "integer"
+      },
+      "stdout": {
+        "type": "string"
+      },
+      "stderr": {
+        "type": "string"
+      },
+      "duration_ms": {
+        "type": "integer"
+      },
+      "timed_out": {
+        "type": "boolean"
+      },
+      "error": {
+        "type": "string"
+      }
+    }
+  }
+}

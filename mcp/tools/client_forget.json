@@ -1,0 +1,44 @@
+{
+  "name": "client_forget",
+  "title": "Forget HHC Client",
+  "description": "Removes an offline, idle HHC client and its retained central history.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "client_id"
+    ],
+    "properties": {
+      "client_id": {
+        "type": "string",
+        "pattern": "^hhc_[0-9a-f]{64}$",
+        "minLength": 68,
+        "maxLength": 68
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": [
+          "completed",
+          "failed"
+        ]
+      },
+      "tool": {
+        "type": "string"
+      },
+      "client_id": {
+        "type": "string"
+      },
+      "forgotten": {
+        "type": "boolean"
+      },
+      "error": {
+        "type": "string"
+      }
+    }
+  }
+}

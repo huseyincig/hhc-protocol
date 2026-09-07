@@ -1,0 +1,85 @@
+{
+  "name": "client_list",
+  "title": "List HHC Clients",
+  "description": "Lists enrolled HHC hosts using safe inventory metadata for explicit target discovery.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": [
+          "all",
+          "online",
+          "offline"
+        ],
+        "default": "all"
+      },
+      "limit": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 200,
+        "default": 100
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": [
+          "completed",
+          "failed"
+        ]
+      },
+      "tool": {
+        "type": "string"
+      },
+      "total_clients": {
+        "type": "integer"
+      },
+      "clients": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "platform": {
+              "type": "string"
+            },
+            "arch": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            },
+            "is_live": {
+              "type": "boolean"
+            },
+            "profile": {
+              "type": "string"
+            },
+            "last_seen": {
+              "type": "string"
+            },
+            "labels": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "error": {
+        "type": "string"
+      }
+    }
+  }
+}

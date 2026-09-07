@@ -1,0 +1,71 @@
+{
+  "name": "browser_navigate",
+  "title": "Browser Navigate",
+  "description": "Navigates system Edge/Chrome to a target URL in headless mode (or interactive session) and prepares page context for interaction.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "client_id",
+      "url"
+    ],
+    "properties": {
+      "client_id": {
+        "type": "string",
+        "pattern": "^hhc_[0-9a-f]{64}$",
+        "minLength": 68,
+        "maxLength": 68
+      },
+      "url": {
+        "type": "string",
+        "maxLength": 4096
+      },
+      "browser": {
+        "type": "string",
+        "enum": [
+          "auto",
+          "edge",
+          "chrome"
+        ],
+        "default": "auto"
+      },
+      "headless": {
+        "type": "boolean",
+        "default": true
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": [
+          "completed",
+          "failed"
+        ]
+      },
+      "tool": {
+        "type": "string"
+      },
+      "client_id": {
+        "type": "string"
+      },
+      "url": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string"
+      },
+      "http_status": {
+        "type": "integer"
+      },
+      "browser": {
+        "type": "string"
+      },
+      "error": {
+        "type": "string"
+      }
+    }
+  }
+}

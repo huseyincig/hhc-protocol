@@ -1,0 +1,72 @@
+{
+  "name": "client_enroll",
+  "title": "Enroll HHC Client",
+  "description": "Creates a new HHC client identity and one-time visible enrollment script for a supported platform.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "platform"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string",
+        "enum": [
+          "any",
+          "windows",
+          "linux",
+          "macos"
+        ]
+      },
+      "name": {
+        "type": "string",
+        "maxLength": 128
+      },
+      "server_url": {
+        "type": "string",
+        "maxLength": 2048
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": [
+          "completed",
+          "failed"
+        ]
+      },
+      "tool": {
+        "type": "string"
+      },
+      "enrollment_token": {
+        "type": "string"
+      },
+      "host_id": {
+        "type": "string"
+      },
+      "expires_at": {
+        "type": "string"
+      },
+      "install_commands": {
+        "type": "object",
+        "properties": {
+          "linux": {
+            "type": "string"
+          },
+          "windows": {
+            "type": "string"
+          },
+          "macos": {
+            "type": "string"
+          }
+        }
+      },
+      "error": {
+        "type": "string"
+      }
+    }
+  }
+}

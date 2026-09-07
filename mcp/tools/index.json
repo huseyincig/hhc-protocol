@@ -1,0 +1,26 @@
+{
+  "contract_version": "5.1.0",
+  "fingerprint": "sha256:69430fa46e941478179fea3f8a40e863d9245599f58f8d1416d79f06a47b25bf",
+  "tools": [
+    "shell_exec",
+    "privileged_shell_exec",
+    "client_update",
+    "client_list",
+    "client_enroll",
+    "client_forget",
+    "log_read",
+    "file_read",
+    "file_list",
+    "file_search",
+    "service_status",
+    "system_snapshot",
+    "gui_launch",
+    "browser_navigate",
+    "browser_interact",
+    "browser_snapshot",
+    "file_write",
+    "directory_create",
+    "file_move",
+    "file_delete"
+  ]
+}

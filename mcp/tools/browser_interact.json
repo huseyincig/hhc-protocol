@@ -1,0 +1,71 @@
+{
+  "name": "browser_interact",
+  "title": "Browser Interact",
+  "description": "Executes a deterministic DOM action (click, type, fill, press, scroll, wait_for, evaluate) on the active browser page.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "client_id",
+      "action"
+    ],
+    "properties": {
+      "client_id": {
+        "type": "string",
+        "pattern": "^hhc_[0-9a-f]{64}$",
+        "minLength": 68,
+        "maxLength": 68
+      },
+      "action": {
+        "type": "string",
+        "enum": [
+          "click",
+          "type",
+          "fill",
+          "press",
+          "scroll",
+          "wait_for",
+          "evaluate"
+        ]
+      },
+      "selector": {
+        "type": "string",
+        "maxLength": 1024
+      },
+      "value": {
+        "type": "string",
+        "maxLength": 65536
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": [
+          "completed",
+          "failed"
+        ]
+      },
+      "tool": {
+        "type": "string"
+      },
+      "client_id": {
+        "type": "string"
+      },
+      "action": {
+        "type": "string"
+      },
+      "selector": {
+        "type": "string"
+      },
+      "result": {
+        "type": "string"
+      },
+      "error": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "name": "browser_snapshot",
+  "title": "Browser Snapshot",
+  "description": "Captures the active browser page accessibility tree (compact, token-efficient DOM structure for AI), HTML, text, or PNG screenshot.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "client_id"
+    ],
+    "properties": {
+      "client_id": {
+        "type": "string",
+        "pattern": "^hhc_[0-9a-f]{64}$",
+        "minLength": 68,
+        "maxLength": 68
+      },
+      "type": {
+        "type": "string",
+        "enum": [
+          "accessibility",
+          "html",
+          "text",
+          "screenshot"
+        ],
+        "default": "accessibility"
+      },
+      "max_bytes": {
+        "type": "integer",
+        "minimum": 1024,
+        "maximum": 262144,
+        "default": 65536
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": [
+          "completed",
+          "failed"
+        ]
+      },
+      "tool": {
+        "type": "string"
+      },
+      "client_id": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string",
+        "enum": [
+          "accessibility",
+          "html",
+          "text",
+          "screenshot"
+        ]
+      },
+      "content": {
+        "type": "string"
+      },
+      "size_bytes": {
+        "type": "integer"
+      },
+      "truncated": {
+        "type": "boolean"
+      },
+      "error": {
+        "type": "string"
+      }
+    }
+  }
+}

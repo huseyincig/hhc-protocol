@@ -1,0 +1,56 @@
+{
+  "name": "file_delete",
+  "title": "Delete File or Directory",
+  "description": "Deletes an allowlisted file/symlink leaf or explicitly recursive directory on an explicitly selected HHC client after destructive host-policy admission.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "client_id",
+      "path"
+    ],
+    "properties": {
+      "client_id": {
+        "type": "string",
+        "pattern": "^hhc_[0-9a-f]{64}$",
+        "minLength": 68,
+        "maxLength": 68
+      },
+      "path": {
+        "type": "string",
+        "maxLength": 4096
+      },
+      "recursive": {
+        "type": "boolean",
+        "default": false
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": [
+          "completed",
+          "failed"
+        ]
+      },
+      "tool": {
+        "type": "string"
+      },
+      "client_id": {
+        "type": "string"
+      },
+      "path": {
+        "type": "string"
+      },
+      "deleted": {
+        "type": "boolean"
+      },
+      "error": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "name": "system_snapshot",
+  "title": "System Snapshot",
+  "description": "Returns a compact read-only host system snapshot.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "client_id"
+    ],
+    "properties": {
+      "client_id": {
+        "type": "string",
+        "pattern": "^hhc_[0-9a-f]{64}$",
+        "minLength": 68,
+        "maxLength": 68
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": [
+          "completed",
+          "failed"
+        ]
+      },
+      "tool": {
+        "type": "string"
+      },
+      "client_id": {
+        "type": "string"
+      },
+      "result": {
+        "type": "object",
+        "properties": {
+          "hostname": {
+            "type": "string"
+          },
+          "platform": {
+            "type": "string"
+          },
+          "arch": {
+            "type": "string"
+          },
+          "uptime_seconds": {
+            "type": "number"
+          },
+          "cpus": {
+            "type": "integer"
+          },
+          "total_memory_bytes": {
+            "type": "integer"
+          },
+          "free_memory_bytes": {
+            "type": "integer"
+          }
+        }
+      },
+      "error": {
+        "type": "string"
+      }
+    }
+  }
+}

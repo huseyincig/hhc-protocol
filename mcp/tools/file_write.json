@@ -1,0 +1,80 @@
+{
+  "name": "file_write",
+  "title": "Write File",
+  "description": "Creates, replaces, or appends bounded UTF-8 content on an explicitly selected HHC client after host-policy admission.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "client_id",
+      "path",
+      "content",
+      "mode"
+    ],
+    "properties": {
+      "client_id": {
+        "type": "string",
+        "pattern": "^hhc_[0-9a-f]{64}$",
+        "minLength": 68,
+        "maxLength": 68
+      },
+      "path": {
+        "type": "string",
+        "maxLength": 4096
+      },
+      "content": {
+        "type": "string"
+      },
+      "mode": {
+        "type": "string",
+        "enum": [
+          "create",
+          "replace",
+          "append"
+        ]
+      },
+      "encoding": {
+        "type": "string",
+        "enum": [
+          "utf8"
+        ],
+        "default": "utf8"
+      },
+      "expected_sha256": {
+        "type": "string",
+        "pattern": "^[0-9a-fA-F]{64}$"
+      },
+      "create_parents": {
+        "type": "boolean",
+        "default": false
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": [
+          "completed",
+          "failed"
+        ]
+      },
+      "tool": {
+        "type": "string"
+      },
+      "client_id": {
+        "type": "string"
+      },
+      "path": {
+        "type": "string"
+      },
+      "bytes_written": {
+        "type": "integer"
+      },
+      "error": {
+        "type": "string"
+      }
+    }
+  }
+}

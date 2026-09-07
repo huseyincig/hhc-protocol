@@ -1,0 +1,72 @@
+{
+  "name": "gui_launch",
+  "title": "Launch GUI in User Session",
+  "description": "Launches an allowlisted GUI application or developer editor in the active interactive user session through the HHC broker. Use gui_launch for browser/desktop GUI intent; do not use shell_exec, cmd/start, or Session 0 workarounds for interactive GUI.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "client_id",
+      "application"
+    ],
+    "properties": {
+      "client_id": {
+        "type": "string",
+        "pattern": "^hhc_[0-9a-f]{64}$",
+        "minLength": 68,
+        "maxLength": 68
+      },
+      "application": {
+        "type": "string",
+        "enum": [
+          "default_browser",
+          "edge",
+          "chrome",
+          "explorer",
+          "notepad",
+          "code",
+          "cursor",
+          "terminal"
+        ]
+      },
+      "target": {
+        "type": "string",
+        "maxLength": 4096
+      },
+      "username": {
+        "type": "string",
+        "maxLength": 256
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": [
+          "completed",
+          "failed"
+        ]
+      },
+      "tool": {
+        "type": "string"
+      },
+      "client_id": {
+        "type": "string"
+      },
+      "application": {
+        "type": "string"
+      },
+      "pid": {
+        "type": "integer"
+      },
+      "target": {
+        "type": "string"
+      },
+      "error": {
+        "type": "string"
+      }
+    }
+  }
+}
