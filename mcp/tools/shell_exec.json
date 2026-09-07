@@ -1,7 +1,7 @@
 {
   "name": "shell_exec",
   "title": "Remote Shell",
-  "description": "Runs a shell command on an explicitly selected HHC client. client_id is mandatory; never infer a host from a default when managing multiple hosts. High-risk operation: executes arbitrary commands on the host. User confirmation is recommended before execution.",
+  "description": "Execute a shell command on the selected HHC client. Fallback tool: prefer dedicated HHC filesystem, process, service, log, browser and system tools whenever they can perform the requested operation. client_id and command are mandatory; commands run bounded with timeouts and truncated output.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
@@ -14,7 +14,9 @@
         "type": "string",
         "pattern": "^hhc_[0-9a-f]{64}$",
         "minLength": 68,
-        "maxLength": 68
+        "maxLength": 68,
+        "description": "Target HHC client. Absolute routing handle, independent of any connection.",
+        "x-mcp-header": "Client-Id"
       },
       "command": {
         "type": "string"
@@ -66,5 +68,11 @@
         "type": "string"
       }
     }
+  },
+  "annotations": {
+    "readOnlyHint": false,
+    "destructiveHint": true,
+    "idempotentHint": false,
+    "openWorldHint": false
   }
 }

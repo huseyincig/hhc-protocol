@@ -1,0 +1,40 @@
+{
+  "name": "process_terminate",
+  "title": "Terminate Process",
+  "description": "Graceful SIGTERM first; force=true escalates to hard kill. High-risk on system PIDs: prefer managed handles.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "process_id"
+    ],
+    "properties": {
+      "process_id": {
+        "type": "string",
+        "pattern": "^prc_[0-9a-f]{32}$",
+        "description": "Opaque process handle returned by process_start. 128-bit entropy, never parsed."
+      },
+      "force": {
+        "type": "boolean",
+        "default": false
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string"
+      },
+      "error": {
+        "type": "string"
+      }
+    }
+  },
+  "annotations": {
+    "readOnlyHint": false,
+    "destructiveHint": false,
+    "idempotentHint": false,
+    "openWorldHint": false
+  }
+}

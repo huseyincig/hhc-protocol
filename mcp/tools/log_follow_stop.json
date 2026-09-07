@@ -1,0 +1,36 @@
+{
+  "name": "log_follow_stop",
+  "title": "Stop Log Follow",
+  "description": "Closes a log-follow handle and releases its state.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "handle"
+    ],
+    "properties": {
+      "handle": {
+        "type": "string",
+        "pattern": "^log_[0-9a-f]{32}$",
+        "description": "Opaque log-follow handle returned by log_follow_start."
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string"
+      },
+      "error": {
+        "type": "string"
+      }
+    }
+  },
+  "annotations": {
+    "readOnlyHint": false,
+    "destructiveHint": false,
+    "idempotentHint": false,
+    "openWorldHint": false
+  }
+}

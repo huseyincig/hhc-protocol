@@ -1,13 +1,13 @@
 {
-  "name": "directory_create",
-  "title": "Create Directory",
-  "description": "Creates an allowlisted directory on an explicitly selected HHC client after host-policy admission.",
+  "name": "service_restart",
+  "title": "Restart Service",
+  "description": "Restarts a service by name (stop + start). Disruptive: confirm intent before calling.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
     "required": [
       "client_id",
-      "path"
+      "service"
     ],
     "properties": {
       "client_id": {
@@ -18,13 +18,9 @@
         "description": "Target HHC client. Absolute routing handle, independent of any connection.",
         "x-mcp-header": "Client-Id"
       },
-      "path": {
+      "service": {
         "type": "string",
-        "maxLength": 4096
-      },
-      "parents": {
-        "type": "boolean",
-        "default": false
+        "description": "Service/unit name."
       }
     }
   },
@@ -32,23 +28,13 @@
     "type": "object",
     "properties": {
       "status": {
-        "type": "string",
-        "enum": [
-          "completed",
-          "failed"
-        ]
-      },
-      "tool": {
         "type": "string"
       },
       "client_id": {
         "type": "string"
       },
-      "path": {
+      "service": {
         "type": "string"
-      },
-      "created": {
-        "type": "boolean"
       },
       "error": {
         "type": "string"
@@ -58,7 +44,7 @@
   "annotations": {
     "readOnlyHint": false,
     "destructiveHint": false,
-    "idempotentHint": true,
+    "idempotentHint": false,
     "openWorldHint": false
   }
 }

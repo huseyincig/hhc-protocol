@@ -1,0 +1,102 @@
+{
+  "name": "process_start",
+  "title": "Start Process",
+  "description": "Spawns a process WITHOUT a shell: executable plus argv array (no shell parsing, no quoting, smaller injection surface). Returns an opaque process_id handle; the MCP connection may close while the process runs. Use shell_exec only when real shell features (pipes, globs) are required.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "client_id",
+      "executable"
+    ],
+    "properties": {
+      "client_id": {
+        "type": "string",
+        "pattern": "^hhc_[0-9a-f]{64}$",
+        "minLength": 68,
+        "maxLength": 68,
+        "description": "Target HHC client. Absolute routing handle, independent of any connection.",
+        "x-mcp-header": "Client-Id"
+      },
+      "executable": {
+        "type": "string",
+        "description": "Binary to execute (no shell metacharacters interpreted)."
+      },
+      "args": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "default": [],
+        "description": "Argument vector, passed verbatim."
+      },
+      "cwd": {
+        "type": "string",
+        "description": "Absolute working directory."
+      },
+      "env": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Extra environment variables."
+      },
+      "pty": {
+        "type": "boolean",
+        "default": false,
+        "description": "Request a PTY (v1: accepted, pipes used, noted in result)."
+      },
+      "timeout_seconds": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 3600,
+        "default": 300
+      },
+      "idle_timeout_seconds": {
+        "type": "integer",
+        "minimum": 30,
+        "maximum": 3600,
+        "default": 600,
+        "description": "Session reaped after this long without reads."
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string"
+      },
+      "process_id": {
+        "type": "string"
+      },
+      "client_id": {
+        "type": "string"
+      },
+      "pid": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "started_at": {
+        "type": "string"
+      },
+      "stdout_cursor": {
+        "type": "integer"
+      },
+      "stderr_cursor": {
+        "type": "integer"
+      },
+      "error": {
+        "type": "string"
+      }
+    }
+  },
+  "annotations": {
+    "readOnlyHint": false,
+    "destructiveHint": false,
+    "idempotentHint": false,
+    "openWorldHint": false
+  }
+}

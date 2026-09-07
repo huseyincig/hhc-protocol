@@ -1,21 +1,26 @@
 {
-  "name": "client_forget",
-  "title": "Forget HHC Client",
-  "description": "Removes an offline, idle HHC client and its retained central history.",
+  "name": "process_list",
+  "title": "List Processes",
+  "description": "Lists process sessions. scope managed shows HHC-tracked sessions; scope system shows OS processes.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
-    "required": [
-      "client_id"
-    ],
     "properties": {
       "client_id": {
         "type": "string",
         "pattern": "^hhc_[0-9a-f]{64}$",
         "minLength": 68,
         "maxLength": 68,
-        "description": "Target HHC client. Absolute routing handle, independent of any connection.",
+        "description": "Target client (required for system scope).",
         "x-mcp-header": "Client-Id"
+      },
+      "scope": {
+        "type": "string",
+        "enum": [
+          "managed",
+          "system"
+        ],
+        "default": "managed"
       }
     }
   },
@@ -23,20 +28,16 @@
     "type": "object",
     "properties": {
       "status": {
-        "type": "string",
-        "enum": [
-          "completed",
-          "failed"
-        ]
-      },
-      "tool": {
         "type": "string"
       },
-      "client_id": {
+      "scope": {
         "type": "string"
       },
-      "forgotten": {
-        "type": "boolean"
+      "processes": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
       },
       "error": {
         "type": "string"
@@ -45,7 +46,7 @@
   },
   "annotations": {
     "readOnlyHint": false,
-    "destructiveHint": true,
+    "destructiveHint": false,
     "idempotentHint": false,
     "openWorldHint": false
   }

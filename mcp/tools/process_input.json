@@ -1,0 +1,41 @@
+{
+  "name": "process_input",
+  "title": "Send Process Input",
+  "description": "Writes data to a running process stdin (REPLs, installers, confirmation prompts).",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "process_id",
+      "data"
+    ],
+    "properties": {
+      "process_id": {
+        "type": "string",
+        "pattern": "^prc_[0-9a-f]{32}$",
+        "description": "Opaque process handle returned by process_start. 128-bit entropy, never parsed."
+      },
+      "data": {
+        "type": "string",
+        "description": "Bytes appended to stdin."
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string"
+      },
+      "error": {
+        "type": "string"
+      }
+    }
+  },
+  "annotations": {
+    "readOnlyHint": false,
+    "destructiveHint": false,
+    "idempotentHint": false,
+    "openWorldHint": false
+  }
+}

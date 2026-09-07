@@ -1,13 +1,13 @@
 {
-  "name": "directory_create",
-  "title": "Create Directory",
-  "description": "Creates an allowlisted directory on an explicitly selected HHC client after host-policy admission.",
+  "name": "client_uninstall",
+  "title": "Uninstall Client",
+  "description": "Removes the HHC agent from the selected client: stops services/daemons and deletes the runtime. Destructive and irreversible; requires explicit confirm=true and admin scope. Supported where the platform helper exists (Linux today).",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
     "required": [
       "client_id",
-      "path"
+      "confirm"
     ],
     "properties": {
       "client_id": {
@@ -18,13 +18,10 @@
         "description": "Target HHC client. Absolute routing handle, independent of any connection.",
         "x-mcp-header": "Client-Id"
       },
-      "path": {
-        "type": "string",
-        "maxLength": 4096
-      },
-      "parents": {
+      "confirm": {
         "type": "boolean",
-        "default": false
+        "const": true,
+        "description": "Explicit destructive-action confirmation."
       }
     }
   },
@@ -32,23 +29,10 @@
     "type": "object",
     "properties": {
       "status": {
-        "type": "string",
-        "enum": [
-          "completed",
-          "failed"
-        ]
-      },
-      "tool": {
         "type": "string"
       },
       "client_id": {
         "type": "string"
-      },
-      "path": {
-        "type": "string"
-      },
-      "created": {
-        "type": "boolean"
       },
       "error": {
         "type": "string"
@@ -58,7 +42,7 @@
   "annotations": {
     "readOnlyHint": false,
     "destructiveHint": false,
-    "idempotentHint": true,
+    "idempotentHint": false,
     "openWorldHint": false
   }
 }

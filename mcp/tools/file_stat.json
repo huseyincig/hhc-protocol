@@ -1,7 +1,7 @@
 {
-  "name": "directory_create",
-  "title": "Create Directory",
-  "description": "Creates an allowlisted directory on an explicitly selected HHC client after host-policy admission.",
+  "name": "file_stat",
+  "title": "File Metadata",
+  "description": "Returns size, timestamps and mode for a path without reading content. Use before edits or transfers.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
@@ -20,11 +20,8 @@
       },
       "path": {
         "type": "string",
-        "maxLength": 4096
-      },
-      "parents": {
-        "type": "boolean",
-        "default": false
+        "maxLength": 4096,
+        "description": "Absolute path on the selected client."
       }
     }
   },
@@ -32,13 +29,6 @@
     "type": "object",
     "properties": {
       "status": {
-        "type": "string",
-        "enum": [
-          "completed",
-          "failed"
-        ]
-      },
-      "tool": {
         "type": "string"
       },
       "client_id": {
@@ -47,7 +37,25 @@
       "path": {
         "type": "string"
       },
-      "created": {
+      "size_bytes": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "mtime": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "mode": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "is_directory": {
         "type": "boolean"
       },
       "error": {
@@ -58,7 +66,7 @@
   "annotations": {
     "readOnlyHint": false,
     "destructiveHint": false,
-    "idempotentHint": true,
+    "idempotentHint": false,
     "openWorldHint": false
   }
 }

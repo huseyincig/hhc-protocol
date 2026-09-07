@@ -1,13 +1,13 @@
 {
-  "name": "log_read",
-  "title": "Read Client Log",
-  "description": "Reads an allowlisted log source from a selected HHC client on demand. Log content is not retained in central SQLite.",
+  "name": "directory_tree",
+  "title": "Directory Tree",
+  "description": "Recursive directory listing with depth and entry caps. Prefer over repeated file_list calls.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
     "required": [
       "client_id",
-      "source"
+      "path"
     ],
     "properties": {
       "client_id": {
@@ -18,23 +18,22 @@
         "description": "Target HHC client. Absolute routing handle, independent of any connection.",
         "x-mcp-header": "Client-Id"
       },
-      "source": {
+      "path": {
         "type": "string",
-        "enum": [
-          "client",
-          "mcp-server",
-          "mcp-tunnel"
-        ]
+        "maxLength": 4096,
+        "description": "Absolute root path on the selected client."
       },
-      "lines": {
+      "max_depth": {
         "type": "integer",
         "minimum": 1,
-        "maximum": 1000,
-        "default": 200
+        "maximum": 10,
+        "default": 5
       },
-      "contains": {
-        "type": "string",
-        "maxLength": 200
+      "max_entries": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 2000,
+        "default": 500
       }
     }
   },
@@ -42,29 +41,19 @@
     "type": "object",
     "properties": {
       "status": {
-        "type": "string",
-        "enum": [
-          "completed",
-          "failed"
-        ]
-      },
-      "tool": {
         "type": "string"
       },
       "client_id": {
         "type": "string"
       },
-      "source": {
+      "path": {
         "type": "string"
       },
-      "lines": {
+      "entries": {
         "type": "array",
         "items": {
-          "type": "string"
+          "type": "object"
         }
-      },
-      "count": {
-        "type": "integer"
       },
       "truncated": {
         "type": "boolean"
@@ -75,9 +64,9 @@
     }
   },
   "annotations": {
-    "readOnlyHint": true,
+    "readOnlyHint": false,
     "destructiveHint": false,
-    "idempotentHint": true,
+    "idempotentHint": false,
     "openWorldHint": false
   }
 }

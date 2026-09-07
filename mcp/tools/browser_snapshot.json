@@ -13,7 +13,9 @@
         "type": "string",
         "pattern": "^hhc_[0-9a-f]{64}$",
         "minLength": 68,
-        "maxLength": 68
+        "maxLength": 68,
+        "description": "Target HHC client. Absolute routing handle, independent of any connection.",
+        "x-mcp-header": "Client-Id"
       },
       "type": {
         "type": "string",
@@ -30,6 +32,11 @@
         "minimum": 1024,
         "maximum": 262144,
         "default": 65536
+      },
+      "browser_id": {
+        "type": "string",
+        "pattern": "^brw_[0-9a-f]{32}$",
+        "description": "Browser context handle from browser_create. Omit to use the default context."
       }
     }
   },
@@ -71,5 +78,11 @@
         "type": "string"
       }
     }
+  },
+  "annotations": {
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": true
   }
 }

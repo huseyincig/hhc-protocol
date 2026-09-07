@@ -1,0 +1,83 @@
+{
+  "name": "process_output",
+  "title": "Read Process Output",
+  "description": "Reads buffered stdout/stderr from a process handle using cursors, so callers never re-fetch the whole log. Pass back the cursors from the previous call.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "process_id"
+    ],
+    "properties": {
+      "process_id": {
+        "type": "string",
+        "pattern": "^prc_[0-9a-f]{32}$",
+        "description": "Opaque process handle returned by process_start. 128-bit entropy, never parsed."
+      },
+      "stdout_cursor": {
+        "type": "integer",
+        "minimum": 0,
+        "default": 0
+      },
+      "stderr_cursor": {
+        "type": "integer",
+        "minimum": 0,
+        "default": 0
+      },
+      "max_bytes": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 262144,
+        "default": 65536
+      },
+      "wait_ms": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 30000,
+        "default": 0,
+        "description": "Long-poll for new output up to this long."
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "enum": [
+          "running",
+          "completed",
+          "failed",
+          "unknown_handle"
+        ]
+      },
+      "stdout": {
+        "type": "string"
+      },
+      "stderr": {
+        "type": "string"
+      },
+      "stdout_cursor": {
+        "type": "integer"
+      },
+      "stderr_cursor": {
+        "type": "integer"
+      },
+      "exit_code": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "error": {
+        "type": "string"
+      }
+    }
+  },
+  "annotations": {
+    "readOnlyHint": false,
+    "destructiveHint": false,
+    "idempotentHint": false,
+    "openWorldHint": false
+  }
+}

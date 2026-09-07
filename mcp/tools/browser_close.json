@@ -1,0 +1,36 @@
+{
+  "name": "browser_close",
+  "title": "Close Browser Context",
+  "description": "Closes a browser context created by browser_create and releases its state.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "browser_id"
+    ],
+    "properties": {
+      "browser_id": {
+        "type": "string",
+        "pattern": "^brw_[0-9a-f]{32}$",
+        "description": "Opaque browser context handle returned by browser_create."
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string"
+      },
+      "error": {
+        "type": "string"
+      }
+    }
+  },
+  "annotations": {
+    "readOnlyHint": false,
+    "destructiveHint": false,
+    "idempotentHint": false,
+    "openWorldHint": false
+  }
+}

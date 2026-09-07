@@ -14,7 +14,9 @@
         "type": "string",
         "pattern": "^hhc_[0-9a-f]{64}$",
         "minLength": 68,
-        "maxLength": 68
+        "maxLength": 68,
+        "description": "Target HHC client. Absolute routing handle, independent of any connection.",
+        "x-mcp-header": "Client-Id"
       },
       "unit": {
         "type": "string",
@@ -58,5 +60,11 @@
         "type": "string"
       }
     }
+  },
+  "annotations": {
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": false
   }
 }
