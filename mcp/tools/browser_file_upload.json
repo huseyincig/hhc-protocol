@@ -1,0 +1,72 @@
+{
+  "name": "browser_file_upload",
+  "title": "Upload Files From Client",
+  "description": "Uploads client-side files into a file input in the page. Upload sources are validated against the same HHC filesystem policy as file_read: absolute paths only, symlinks resolved, traversal denied, outside-policy reads fail with BROWSER_UPLOAD_DENIED instead of bypassing file policy.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "client_id",
+      "paths"
+    ],
+    "properties": {
+      "client_id": {
+        "type": "string",
+        "pattern": "^hhc_[0-9a-f]{64}$",
+        "minLength": 68,
+        "maxLength": 68,
+        "description": "Target HHC client. Absolute routing handle, independent of any connection.",
+        "x-mcp-header": "Client-Id"
+      },
+      "browser_id": {
+        "type": "string",
+        "pattern": "^brw_[0-9a-f]{32}$",
+        "description": "Browser handle from browser_create. Omit to use the ephemeral default context."
+      },
+      "target": {
+        "type": "string",
+        "description": "Element reference from a browser_snapshot/browser_find result (e.g. \"e17\"), or a CSS selector for backward compatibility. Refs expire on navigation or DOM change; stale refs fail with BROWSER_STALE_TARGET."
+      },
+      "paths": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "minItems": 1,
+        "maxItems": 10,
+        "description": "Absolute file paths on the selected client."
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string"
+      },
+      "browser_id": {
+        "type": "string"
+      },
+      "uploaded": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        },
+        "description": "Uploaded files as {path, filename, size_bytes}."
+      },
+      "error": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    }
+  },
+  "annotations": {
+    "readOnlyHint": false,
+    "destructiveHint": false,
+    "idempotentHint": false,
+    "openWorldHint": true
+  }
+}

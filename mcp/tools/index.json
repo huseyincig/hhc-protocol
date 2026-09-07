@@ -1,6 +1,6 @@
 {
-  "contract_version": "5.3.0",
-  "fingerprint": "sha256:0e0ed8e2a6d025ec0b9ed46c6a18b8fe26caf842a2a5cef0519bd51623cadebe",
+  "contract_version": "5.4.0",
+  "fingerprint": "sha256:f9b644fbff4ece9d0e5a187b20588ca7dcc8d0c6eeacbc66e54d58606a4af0d2",
   "tools": [
     "client_list",
     "client_ping",
@@ -38,6 +38,12 @@
     "browser_navigate",
     "browser_interact",
     "browser_snapshot",
+    "browser_find",
+    "browser_tabs",
+    "browser_take_screenshot",
+    "browser_console_messages",
+    "browser_network_requests",
+    "browser_file_upload",
     "browser_close",
     "audit_query",
     "hhc_feedback",

@@ -1,6 +1,10 @@
 automatic_client_updates
+browser_downloads
+browser_existing_attach
+browser_headed
 browser_private_network
 browser_script_exec
+browser_uploads
 directory_manage
 file_delete
 file_move

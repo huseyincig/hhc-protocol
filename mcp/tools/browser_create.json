@@ -1,7 +1,7 @@
 {
   "name": "browser_create",
-  "title": "Create Browser Context",
-  "description": "Creates an isolated browser context on the client and returns a browser_id handle, so concurrent agents never share state. Pass the handle to navigate/interact/snapshot; omit it to use the default context.",
+  "title": "Create Browser Session",
+  "description": "Creates an isolated managed browser session on the client and returns an opaque browser_id handle, so concurrent agents never share cookies, storage, tabs or navigation state. Default mode=managed launches HHC-managed Chromium via Playwright; mode=existing attaches to an operator-provided Chromium over CDP (optional capability, fails with BROWSER_EXISTING_ATTACH_FAILED instead of silently falling back). Pass the handle to every other browser_* tool; omit browser_id to use the ephemeral default context. Prefer HHC browser tools over shell_exec for web/browser automation.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
@@ -16,6 +16,57 @@
         "maxLength": 68,
         "description": "Target HHC client. Absolute routing handle, independent of any connection.",
         "x-mcp-header": "Client-Id"
+      },
+      "mode": {
+        "type": "string",
+        "enum": [
+          "managed",
+          "existing"
+        ],
+        "default": "managed",
+        "description": "managed: HHC-launched Chromium (default). existing: attach over CDP (requires policy)."
+      },
+      "headless": {
+        "type": "boolean",
+        "default": true,
+        "description": "Headless managed Chromium (reliable default, no display needed). Headed mode requires policy and, on Windows services, an interactive user session."
+      },
+      "viewport": {
+        "type": "string",
+        "pattern": "^[0-9]{2,5}x[0-9]{2,5}$",
+        "default": "1280x720",
+        "description": "Viewport WIDTHxHEIGHT in CSS pixels."
+      },
+      "locale": {
+        "type": "string",
+        "maxLength": 32,
+        "description": "BCP-47 locale, e.g. en-US."
+      },
+      "timezone": {
+        "type": "string",
+        "maxLength": 64,
+        "description": "IANA timezone, e.g. Europe/Istanbul."
+      },
+      "user_agent": {
+        "type": "string",
+        "maxLength": 512,
+        "description": "Custom user agent string."
+      },
+      "profile_id": {
+        "type": "string",
+        "maxLength": 64,
+        "description": "HHC-managed persistent profile id (policy-controlled). Omit for the ephemeral default: cookies/storage vanish on close."
+      },
+      "cdp_endpoint": {
+        "type": "string",
+        "maxLength": 512,
+        "description": "CDP endpoint for mode=existing (e.g. http://127.0.0.1:9222). Ignored in managed mode."
+      },
+      "timeout_ms": {
+        "type": "integer",
+        "minimum": 1000,
+        "maximum": 120000,
+        "description": "Session creation timeout override."
       }
     }
   },
@@ -31,8 +82,29 @@
       "client_id": {
         "type": "string"
       },
-      "error": {
+      "mode": {
         "type": "string"
+      },
+      "headless": {
+        "type": "boolean"
+      },
+      "playwright_version": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "browser_revision": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "error": {
+        "type": [
+          "string",
+          "null"
+        ]
       }
     }
   },

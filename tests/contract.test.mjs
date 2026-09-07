@@ -28,11 +28,11 @@ test('namespaces and required files exist', () => {
     assert.ok(fs.existsSync(path.join(ROOT, f)), f);
 });
 
-test('tool manifest is exact: 42 tools, pinned fingerprint', () => {
+test('tool manifest is exact: 48 tools, pinned fingerprint', () => {
   const index = json('mcp/tools/index.json');
   assert.equal(index.contract_version, read('mcp/contract-version').trim());
   assert.equal(index.fingerprint, read('mcp/fingerprint').trim());
-  assert.equal(index.tools.length, 42);
+  assert.equal(index.tools.length, 48);
   const files = fs.readdirSync(path.join(ROOT, 'mcp/tools')).filter((f) => f.endsWith('.json') && f !== 'index.json');
   assert.deepEqual([...files.map((f) => f.replace(/\.json$/, ''))].sort(), [...index.tools].sort());
   for (const name of index.tools) {
@@ -49,7 +49,7 @@ test('bindings agree with files', async () => {
   assert.deepEqual([...b.MCP_TOOL_NAMES].sort(), [...json('mcp/tools/index.json').tools].sort());
   assert.equal(b.HHC_AGENT_PROTOCOL_VERSION, '1.0.0');
   assert.equal(b.HOST_POLICY_CONTRACT_VERSION, '1.0.0');
-  assert.equal(b.HOST_POLICY_CAPABILITY_NAMES.length, 18);
+  assert.equal(b.HOST_POLICY_CAPABILITY_NAMES.length, 22);
 });
 
 test('schemas parse and hello requires identity fields', () => {
