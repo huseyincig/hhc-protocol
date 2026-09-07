@@ -5,11 +5,23 @@
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
-    "required": ["category", "title", "description"],
+    "required": [
+      "category",
+      "title",
+      "description"
+    ],
     "properties": {
       "category": {
         "type": "string",
-        "enum": ["bug", "compatibility", "missing_capability", "performance", "security", "usability", "other"],
+        "enum": [
+          "bug",
+          "compatibility",
+          "missing_capability",
+          "performance",
+          "security",
+          "usability",
+          "other"
+        ],
         "description": "Problem class. Security reports are routed to a restricted queue."
       },
       "title": {
@@ -62,7 +74,14 @@
       },
       "user_impact": {
         "type": "string",
-        "enum": ["none", "minor", "workflow_blocked", "client_unusable", "data_risk", "security_risk"],
+        "enum": [
+          "none",
+          "minor",
+          "workflow_blocked",
+          "client_unusable",
+          "data_risk",
+          "security_risk"
+        ],
         "description": "Impact on the reporter. Severity is computed server-side; do not inflate."
       },
       "include_diagnostics": {
@@ -75,12 +94,29 @@
   "outputSchema": {
     "type": "object",
     "properties": {
-      "report_id": { "type": "string" },
-      "issue_id": { "type": "string" },
-      "status": { "type": "string", "enum": ["accepted", "linked_existing"] },
-      "deduplicated": { "type": "boolean" },
-      "occurrence_count": { "type": "integer" },
-      "error": { "type": "string" }
+      "report_id": {
+        "type": "string"
+      },
+      "issue_id": {
+        "type": "string"
+      },
+      "acceptance": {
+        "type": "string",
+        "enum": [
+          "accepted",
+          "linked_existing"
+        ],
+        "description": "accepted = new issue filed; linked_existing = deduplicated onto an existing issue."
+      },
+      "deduplicated": {
+        "type": "boolean"
+      },
+      "occurrence_count": {
+        "type": "integer"
+      },
+      "error": {
+        "type": "string"
+      }
     }
   },
   "annotations": {
