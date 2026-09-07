@@ -60,3 +60,31 @@ test('schemas parse and hello requires identity fields', () => {
   assert.ok(errors.enum.includes('PROTOCOL_INCOMPATIBLE'));
   assert.ok(errors.enum.includes('HOST_POLICY_DENIED'));
 });
+
+test('index fingerprint is self-consistent with tool files', async () => {
+  const fs = await import('node:fs');
+  const crypto = await import('node:crypto');
+  const path = await import('node:path');
+  const { fileURLToPath } = await import('node:url');
+  const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+  const canonical = (v) => {
+    if (Array.isArray(v)) return '[' + v.map(canonical).join(',') + ']';
+    if (v && typeof v === 'object')
+      return (
+        '{' +
+        Object.keys(v)
+          .sort()
+          .map((k) => JSON.stringify(k) + ':' + canonical(v[k]))
+          .join(',') +
+        '}'
+      );
+    return JSON.stringify(v);
+  };
+  const index = JSON.parse(fs.readFileSync(path.join(root, 'mcp/tools/index.json'), 'utf8'));
+  const all = index.tools.map((n) =>
+    JSON.parse(fs.readFileSync(path.join(root, 'mcp/tools', `${n}.json`), 'utf8'))
+  );
+  const fp = 'sha256:' + crypto.createHash('sha256').update(canonical(all)).digest('hex');
+  assert.equal(index.fingerprint, fp);
+  assert.equal(fs.readFileSync(path.join(root, 'mcp/fingerprint'), 'utf8').trim(), fp);
+});
