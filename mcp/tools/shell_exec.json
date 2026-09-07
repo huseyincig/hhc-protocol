@@ -1,7 +1,7 @@
 {
   "name": "shell_exec",
   "title": "Remote Shell",
-  "description": "Execute a shell command on the selected HHC client. Fallback tool: prefer dedicated HHC filesystem, process, service, log, browser and system tools whenever they can perform the requested operation. client_id and command are mandatory; commands run bounded with timeouts and truncated output.",
+  "description": "Execute a shell command on the selected HHC client. Fallback tool: prefer dedicated HHC filesystem, process, service, log, browser and system tools whenever they can perform the requested operation. High-risk operation: executes arbitrary commands on the host. client_id and command are mandatory; commands run bounded with timeouts and truncated output. User confirmation is recommended before execution.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
