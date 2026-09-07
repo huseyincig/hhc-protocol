@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.3.0 — 2026-09-07
+
+New tool `hhc_feedback` (42 total): structured product-issue reporting with server-side enrichment,
+secret redaction, deterministic fingerprint dedup and severity computation. All annotations false
+(internal sink); outputSchema-validated structured result.
+
 ## 5.2.0 — 2026-09-07
 
 20 new tools (41 total): client_ping/uninstall, file_read_many/edit/stat, directory_tree,

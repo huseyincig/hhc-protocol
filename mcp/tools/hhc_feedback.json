@@ -1,0 +1,92 @@
+{
+  "name": "hhc_feedback",
+  "title": "Report HHC Issue",
+  "description": "Report a suspected HHC Remote Control product bug, compatibility problem, unexpected tool behavior, performance issue, security concern or usability issue. Do not use for normal command failures, invalid user input, expected permission denials or errors caused by the target operating system/application rather than HHC.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["category", "title", "description"],
+    "properties": {
+      "category": {
+        "type": "string",
+        "enum": ["bug", "compatibility", "missing_capability", "performance", "security", "usability", "other"],
+        "description": "Problem class. Security reports are routed to a restricted queue."
+      },
+      "title": {
+        "type": "string",
+        "minLength": 5,
+        "maxLength": 160,
+        "description": "Short summary of the suspected problem."
+      },
+      "description": {
+        "type": "string",
+        "minLength": 10,
+        "maxLength": 8000,
+        "description": "What happened, in the reporter's own words. Never include tokens, passwords, keys or cookies."
+      },
+      "expected_behavior": {
+        "type": "string",
+        "maxLength": 4000,
+        "description": "What should have happened."
+      },
+      "actual_behavior": {
+        "type": "string",
+        "maxLength": 4000,
+        "description": "What actually happened, including error codes."
+      },
+      "reproduction": {
+        "type": "string",
+        "maxLength": 6000,
+        "description": "Steps or tool sequence that reproduces the problem."
+      },
+      "client_id": {
+        "type": "string",
+        "pattern": "^hhc_[0-9a-f]{64}$",
+        "minLength": 68,
+        "maxLength": 68,
+        "description": "Related HHC client, if the problem is host-specific. Ownership is verified server-side.",
+        "x-mcp-header": "Client-Id"
+      },
+      "related_request_id": {
+        "type": "string",
+        "description": "Related MCP request id for server-side correlation. Not an authorization token."
+      },
+      "related_job_id": {
+        "type": "string",
+        "description": "Related HHC job id for server-side correlation."
+      },
+      "related_process_id": {
+        "type": "string",
+        "pattern": "^prc_[0-9a-f]{32}$",
+        "description": "Related process handle for server-side correlation."
+      },
+      "user_impact": {
+        "type": "string",
+        "enum": ["none", "minor", "workflow_blocked", "client_unusable", "data_risk", "security_risk"],
+        "description": "Impact on the reporter. Severity is computed server-side; do not inflate."
+      },
+      "include_diagnostics": {
+        "type": "boolean",
+        "default": false,
+        "description": "Attach a sanitized diagnostic bundle (bounded, secret-redacted). Default false."
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "report_id": { "type": "string" },
+      "issue_id": { "type": "string" },
+      "status": { "type": "string", "enum": ["accepted", "linked_existing"] },
+      "deduplicated": { "type": "boolean" },
+      "occurrence_count": { "type": "integer" },
+      "error": { "type": "string" }
+    }
+  },
+  "annotations": {
+    "readOnlyHint": false,
+    "destructiveHint": false,
+    "idempotentHint": false,
+    "openWorldHint": false
+  }
+}

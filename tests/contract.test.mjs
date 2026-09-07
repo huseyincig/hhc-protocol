@@ -28,11 +28,11 @@ test('namespaces and required files exist', () => {
     assert.ok(fs.existsSync(path.join(ROOT, f)), f);
 });
 
-test('tool manifest is exact: 41 tools, pinned fingerprint', () => {
+test('tool manifest is exact: 42 tools, pinned fingerprint', () => {
   const index = json('mcp/tools/index.json');
   assert.equal(index.contract_version, read('mcp/contract-version').trim());
   assert.equal(index.fingerprint, read('mcp/fingerprint').trim());
-  assert.equal(index.tools.length, 41);
+  assert.equal(index.tools.length, 42);
   const files = fs.readdirSync(path.join(ROOT, 'mcp/tools')).filter((f) => f.endsWith('.json') && f !== 'index.json');
   assert.deepEqual([...files.map((f) => f.replace(/\.json$/, ''))].sort(), [...index.tools].sort());
   for (const name of index.tools) {
