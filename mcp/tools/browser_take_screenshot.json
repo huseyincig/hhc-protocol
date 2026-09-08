@@ -53,37 +53,45 @@
     "type": "object",
     "properties": {
       "status": {
-        "type": "string"
+        "type": "string",
+        "description": "completed on success, failed on error."
       },
       "browser_id": {
-        "type": "string"
+        "type": "string",
+        "description": "Echo of the browser session handle."
       },
       "page_id": {
         "type": [
           "string",
           "null"
-        ]
+        ],
+        "description": "Handle of the active page."
       },
       "format": {
-        "type": "string"
+        "type": "string",
+        "description": "Image format of the screenshot."
       },
       "bytes": {
-        "type": "integer"
+        "type": "integer",
+        "description": "Size of the captured image in bytes."
       },
       "truncated": {
-        "type": "boolean"
+        "type": "boolean",
+        "description": "True when output was cut to bounds."
       },
       "base64": {
         "type": [
           "string",
           "null"
-        ]
+        ],
+        "description": "Base64-encoded image bytes (null when persisted as artifact)."
       },
       "error": {
         "type": [
           "string",
           "null"
-        ]
+        ],
+        "description": "Machine-readable error code when status is failed."
       },
       "artifact_path": {
         "type": [
@@ -91,6 +99,10 @@
           "null"
         ],
         "description": "Agent-local path of the persisted capture when truncated (fetch via file_read)."
+      },
+      "retryable": {
+        "type": "boolean",
+        "description": "Whether a failed call may succeed on retry."
       }
     }
   },

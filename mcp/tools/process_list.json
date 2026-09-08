@@ -35,25 +35,35 @@
     "type": "object",
     "properties": {
       "status": {
-        "type": "string"
+        "type": "string",
+        "description": "completed on success, failed on error."
       },
       "scope": {
-        "type": "string"
+        "type": "string",
+        "description": "Requested scope the result refers to."
       },
       "processes": {
         "type": "array",
         "items": {
           "type": "object"
-        }
+        },
+        "description": "Process records returned."
       },
       "error": {
-        "type": "string"
+        "type": "string",
+        "description": "Machine-readable error code when status is failed."
       },
       "truncated": {
-        "type": "boolean"
+        "type": "boolean",
+        "description": "True when output was cut to bounds."
       },
       "total_count": {
-        "type": "integer"
+        "type": "integer",
+        "description": "Total records; may exceed returned records."
+      },
+      "retryable": {
+        "type": "boolean",
+        "description": "Whether a failed call may succeed on retry."
       }
     }
   },

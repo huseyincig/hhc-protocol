@@ -32,16 +32,24 @@
     "type": "object",
     "properties": {
       "status": {
-        "type": "string"
+        "type": "string",
+        "description": "completed on success, failed on error."
       },
       "error": {
-        "type": "string"
+        "type": "string",
+        "description": "Machine-readable error code when status is failed."
       },
       "signal": {
-        "type": "string"
+        "type": "string",
+        "description": "Signal used to terminate."
       },
       "graceful": {
-        "type": "boolean"
+        "type": "boolean",
+        "description": "Whether the process exited gracefully."
+      },
+      "retryable": {
+        "type": "boolean",
+        "description": "Whether a failed call may succeed on retry."
       }
     }
   },

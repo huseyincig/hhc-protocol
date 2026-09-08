@@ -39,19 +39,28 @@
     "type": "object",
     "properties": {
       "status": {
-        "type": "string"
+        "type": "string",
+        "description": "completed on success, failed on error."
       },
       "handle": {
-        "type": "string"
+        "type": "string",
+        "description": "Echo of the log-follow handle."
       },
       "content": {
-        "type": "string"
+        "type": "string",
+        "description": "Backlog text returned with the new handle."
       },
       "cursor": {
-        "type": "integer"
+        "type": "integer",
+        "description": "Resume offset for the next call."
       },
       "error": {
-        "type": "string"
+        "type": "string",
+        "description": "Machine-readable error code when status is failed."
+      },
+      "retryable": {
+        "type": "boolean",
+        "description": "Whether a failed call may succeed on retry."
       }
     }
   },

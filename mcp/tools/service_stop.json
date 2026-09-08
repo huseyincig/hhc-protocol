@@ -28,16 +28,24 @@
     "type": "object",
     "properties": {
       "status": {
-        "type": "string"
+        "type": "string",
+        "description": "completed on success, failed on error."
       },
       "client_id": {
-        "type": "string"
+        "type": "string",
+        "description": "Echo of the target host id (null when no host was targeted)."
       },
       "service": {
-        "type": "string"
+        "type": "string",
+        "description": "Service the result refers to."
       },
       "error": {
-        "type": "string"
+        "type": "string",
+        "description": "Machine-readable error code when status is failed."
+      },
+      "retryable": {
+        "type": "boolean",
+        "description": "Whether a failed call may succeed on retry."
       }
     }
   },

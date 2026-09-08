@@ -62,55 +62,69 @@
     "type": "object",
     "properties": {
       "status": {
-        "type": "string"
+        "type": "string",
+        "description": "completed on success, failed on error."
       },
       "browser_id": {
-        "type": "string"
+        "type": "string",
+        "description": "Echo of the browser session handle."
       },
       "page_id": {
         "type": [
           "string",
           "null"
-        ]
+        ],
+        "description": "Handle of the active page."
       },
       "url": {
         "type": [
           "string",
           "null"
-        ]
+        ],
+        "description": "Current page URL."
       },
       "title": {
         "type": [
           "string",
           "null"
-        ]
+        ],
+        "description": "Current page title."
       },
       "snapshot_id": {
         "type": [
           "string",
           "null"
-        ]
+        ],
+        "description": "Handle of this snapshot."
       },
       "page_revision": {
         "type": [
           "integer",
           "null"
-        ]
+        ],
+        "description": "Monotonic page revision for staleness detection."
       },
       "truncated": {
-        "type": "boolean"
+        "type": "boolean",
+        "description": "True when output was cut to bounds."
       },
       "tree": {
         "type": [
           "string",
           "null"
-        ]
+        ],
+        "description": "Accessibility tree of the page."
       },
       "error": {
         "type": [
           "string",
           "null"
-        ]
+        ],
+        "description": "Machine-readable error code when status is failed."
+      },
+      "retryable": {
+        "type": "boolean",
+        "description": "Whether a failed call may succeed on retry."
       }
     }
   },

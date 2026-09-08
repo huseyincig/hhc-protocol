@@ -95,10 +95,12 @@
     "type": "object",
     "properties": {
       "report_id": {
-        "type": "string"
+        "type": "string",
+        "description": "Stored report handle."
       },
       "issue_id": {
-        "type": "string"
+        "type": "string",
+        "description": "Deduplicated issue handle."
       },
       "acceptance": {
         "type": "string",
@@ -109,13 +111,20 @@
         "description": "accepted = new issue filed; linked_existing = deduplicated onto an existing issue."
       },
       "deduplicated": {
-        "type": "boolean"
+        "type": "boolean",
+        "description": "Whether this report matched a known issue."
       },
       "occurrence_count": {
-        "type": "integer"
+        "type": "integer",
+        "description": "Times this issue has been reported."
       },
       "error": {
-        "type": "string"
+        "type": "string",
+        "description": "Machine-readable error code when status is failed."
+      },
+      "retryable": {
+        "type": "boolean",
+        "description": "Whether a failed call may succeed on retry."
       }
     }
   },

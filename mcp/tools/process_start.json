@@ -66,31 +66,43 @@
     "type": "object",
     "properties": {
       "status": {
-        "type": "string"
+        "type": "string",
+        "description": "completed on success, failed on error."
       },
       "process_id": {
-        "type": "string"
+        "type": "string",
+        "description": "Echo of the process handle."
       },
       "client_id": {
-        "type": "string"
+        "type": "string",
+        "description": "Echo of the target host id (null when no host was targeted)."
       },
       "pid": {
         "type": [
           "integer",
           "null"
-        ]
+        ],
+        "description": "Operating-system PID (null while unknown)."
       },
       "started_at": {
-        "type": "string"
+        "type": "string",
+        "description": "Process start timestamp."
       },
       "stdout_cursor": {
-        "type": "integer"
+        "type": "integer",
+        "description": "Stdout resume offset for the next call."
       },
       "stderr_cursor": {
-        "type": "integer"
+        "type": "integer",
+        "description": "Stderr resume offset for the next call."
       },
       "error": {
-        "type": "string"
+        "type": "string",
+        "description": "Machine-readable error code when status is failed."
+      },
+      "retryable": {
+        "type": "boolean",
+        "description": "Whether a failed call may succeed on retry."
       }
     }
   },

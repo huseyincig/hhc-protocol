@@ -78,37 +78,49 @@
     "type": "object",
     "properties": {
       "status": {
-        "type": "string"
+        "type": "string",
+        "description": "completed on success, failed on error."
       },
       "browser_id": {
-        "type": "string"
+        "type": "string",
+        "description": "Echo of the browser session handle."
       },
       "page_id": {
         "type": [
           "string",
           "null"
-        ]
+        ],
+        "description": "Handle of the active page."
       },
       "page_revision": {
         "type": [
           "integer",
           "null"
-        ]
+        ],
+        "description": "Monotonic page revision for staleness detection."
       },
       "action": {
-        "type": "string"
+        "type": "string",
+        "description": "Page action that was performed."
       },
       "ok": {
-        "type": "boolean"
+        "type": "boolean",
+        "description": "Whether the action took effect."
       },
       "duration_ms": {
-        "type": "integer"
+        "type": "integer",
+        "description": "Operation duration in milliseconds."
       },
       "error": {
         "type": [
           "string",
           "null"
-        ]
+        ],
+        "description": "Machine-readable error code when status is failed."
+      },
+      "retryable": {
+        "type": "boolean",
+        "description": "Whether a failed call may succeed on retry."
       }
     }
   },

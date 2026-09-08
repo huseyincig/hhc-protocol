@@ -45,22 +45,26 @@
     "type": "object",
     "properties": {
       "status": {
-        "type": "string"
+        "type": "string",
+        "description": "completed on success, failed on error."
       },
       "browser_id": {
-        "type": "string"
+        "type": "string",
+        "description": "Echo of the browser session handle."
       },
       "page_id": {
         "type": [
           "string",
           "null"
-        ]
+        ],
+        "description": "Handle of the active page."
       },
       "page_revision": {
         "type": [
           "integer",
           "null"
-        ]
+        ],
+        "description": "Monotonic page revision for staleness detection."
       },
       "matches": {
         "type": "array",
@@ -70,13 +74,19 @@
         "description": "Matches as {ref, path, snippet}. Refs are usable in browser_interact target."
       },
       "truncated": {
-        "type": "boolean"
+        "type": "boolean",
+        "description": "True when output was cut to bounds."
       },
       "error": {
         "type": [
           "string",
           "null"
-        ]
+        ],
+        "description": "Machine-readable error code when status is failed."
+      },
+      "retryable": {
+        "type": "boolean",
+        "description": "Whether a failed call may succeed on retry."
       }
     }
   },

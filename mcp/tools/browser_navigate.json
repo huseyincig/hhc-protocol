@@ -40,43 +40,51 @@
     "type": "object",
     "properties": {
       "status": {
-        "type": "string"
+        "type": "string",
+        "description": "completed on success, failed on error."
       },
       "browser_id": {
-        "type": "string"
+        "type": "string",
+        "description": "Echo of the browser session handle."
       },
       "page_id": {
         "type": [
           "string",
           "null"
-        ]
+        ],
+        "description": "Handle of the active page."
       },
       "url": {
         "type": [
           "string",
           "null"
-        ]
+        ],
+        "description": "Current page URL."
       },
       "title": {
         "type": [
           "string",
           "null"
-        ]
+        ],
+        "description": "Current page title."
       },
       "http_status": {
         "type": [
           "integer",
           "null"
-        ]
+        ],
+        "description": "HTTP status of the navigation (null when unavailable)."
       },
       "duration_ms": {
-        "type": "integer"
+        "type": "integer",
+        "description": "Operation duration in milliseconds."
       },
       "error": {
         "type": [
           "string",
           "null"
-        ]
+        ],
+        "description": "Machine-readable error code when status is failed."
       },
       "launch_detail": {
         "type": [
@@ -84,6 +92,10 @@
           "null"
         ],
         "description": "Launch resolution diagnostics (tried paths) when the browser failed to start."
+      },
+      "retryable": {
+        "type": "boolean",
+        "description": "Whether a failed call may succeed on retry."
       }
     }
   },

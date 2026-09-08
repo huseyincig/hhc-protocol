@@ -52,25 +52,36 @@
         "enum": [
           "completed",
           "failed"
-        ]
+        ],
+        "description": "completed on success, failed on error."
       },
       "tool": {
-        "type": "string"
+        "type": "string",
+        "description": "Echo of the invoked tool name."
       },
       "client_id": {
-        "type": "string"
+        "type": "string",
+        "description": "Echo of the target host id (null when no host was targeted)."
       },
       "application": {
-        "type": "string"
+        "type": "string",
+        "description": "Application the result refers to."
       },
       "pid": {
-        "type": "integer"
+        "type": "integer",
+        "description": "Operating-system PID (null while unknown)."
       },
       "target": {
-        "type": "string"
+        "type": "string",
+        "description": "Target the result refers to."
       },
       "error": {
-        "type": "string"
+        "type": "string",
+        "description": "Machine-readable error code when status is failed."
+      },
+      "retryable": {
+        "type": "boolean",
+        "description": "Whether a failed call may succeed on retry."
       }
     }
   },

@@ -52,40 +52,55 @@
           "completed",
           "failed",
           "unknown_handle"
-        ]
+        ],
+        "description": "completed on success, failed on error."
       },
       "stdout": {
-        "type": "string"
+        "type": "string",
+        "description": "Captured standard output text."
       },
       "stderr": {
-        "type": "string"
+        "type": "string",
+        "description": "Captured standard error text."
       },
       "stdout_cursor": {
-        "type": "integer"
+        "type": "integer",
+        "description": "Stdout resume offset for the next call."
       },
       "stderr_cursor": {
-        "type": "integer"
+        "type": "integer",
+        "description": "Stderr resume offset for the next call."
       },
       "exit_code": {
         "type": [
           "integer",
           "null"
-        ]
+        ],
+        "description": "Exit code (null while running)."
       },
       "error": {
-        "type": "string"
+        "type": "string",
+        "description": "Machine-readable error code when status is failed."
       },
       "stdout_truncated": {
-        "type": "boolean"
+        "type": "boolean",
+        "description": "True when stdout was cut to bounds."
       },
       "stdout_dropped_bytes": {
-        "type": "integer"
+        "type": "integer",
+        "description": "Stdout bytes discarded under the memory cap."
       },
       "stderr_truncated": {
-        "type": "boolean"
+        "type": "boolean",
+        "description": "True when stderr was cut to bounds."
       },
       "stderr_dropped_bytes": {
-        "type": "integer"
+        "type": "integer",
+        "description": "Stderr bytes discarded under the memory cap."
+      },
+      "retryable": {
+        "type": "boolean",
+        "description": "Whether a failed call may succeed on retry."
       }
     }
   },

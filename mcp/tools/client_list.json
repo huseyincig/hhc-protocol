@@ -33,13 +33,16 @@
         "enum": [
           "completed",
           "failed"
-        ]
+        ],
+        "description": "completed on success, failed on error."
       },
       "tool": {
-        "type": "string"
+        "type": "string",
+        "description": "Echo of the invoked tool name."
       },
       "total_clients": {
-        "type": "integer"
+        "type": "integer",
+        "description": "Total enrolled hosts matching the filter."
       },
       "clients": {
         "type": "array",
@@ -77,10 +80,16 @@
               }
             }
           }
-        }
+        },
+        "description": "Host inventory records."
       },
       "error": {
-        "type": "string"
+        "type": "string",
+        "description": "Machine-readable error code when status is failed."
+      },
+      "retryable": {
+        "type": "boolean",
+        "description": "Whether a failed call may succeed on retry."
       }
     }
   },

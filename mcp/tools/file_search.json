@@ -47,19 +47,24 @@
         "enum": [
           "completed",
           "failed"
-        ]
+        ],
+        "description": "completed on success, failed on error."
       },
       "tool": {
-        "type": "string"
+        "type": "string",
+        "description": "Echo of the invoked tool name."
       },
       "client_id": {
-        "type": "string"
+        "type": "string",
+        "description": "Echo of the target host id (null when no host was targeted)."
       },
       "path": {
-        "type": "string"
+        "type": "string",
+        "description": "Path the result refers to."
       },
       "query": {
-        "type": "string"
+        "type": "string",
+        "description": "Search query the result refers to."
       },
       "matches": {
         "type": "array",
@@ -76,13 +81,20 @@
               "type": "string"
             }
           }
-        }
+        },
+        "description": "Matching lines with file path, line number, and preview."
       },
       "total_matches": {
-        "type": "integer"
+        "type": "integer",
+        "description": "Total matches; may exceed returned matches."
       },
       "error": {
-        "type": "string"
+        "type": "string",
+        "description": "Machine-readable error code when status is failed."
+      },
+      "retryable": {
+        "type": "boolean",
+        "description": "Whether a failed call may succeed on retry."
       }
     }
   },

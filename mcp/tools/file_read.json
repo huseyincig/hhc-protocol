@@ -40,28 +40,40 @@
         "enum": [
           "completed",
           "failed"
-        ]
+        ],
+        "description": "completed on success, failed on error."
       },
       "tool": {
-        "type": "string"
+        "type": "string",
+        "description": "Echo of the invoked tool name."
       },
       "client_id": {
-        "type": "string"
+        "type": "string",
+        "description": "Echo of the target host id (null when no host was targeted)."
       },
       "path": {
-        "type": "string"
+        "type": "string",
+        "description": "Path the result refers to."
       },
       "content": {
-        "type": "string"
+        "type": "string",
+        "description": "File content read (bounded by max_bytes)."
       },
       "size_bytes": {
-        "type": "integer"
+        "type": "integer",
+        "description": "Bytes of content returned."
       },
       "encoding": {
-        "type": "string"
+        "type": "string",
+        "description": "Content encoding of the returned text."
       },
       "error": {
-        "type": "string"
+        "type": "string",
+        "description": "Machine-readable error code when status is failed."
+      },
+      "retryable": {
+        "type": "boolean",
+        "description": "Whether a failed call may succeed on retry."
       }
     }
   },

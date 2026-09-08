@@ -43,31 +43,44 @@
         "enum": [
           "completed",
           "failed"
-        ]
+        ],
+        "description": "completed on success, failed on error."
       },
       "tool": {
-        "type": "string"
+        "type": "string",
+        "description": "Echo of the invoked tool name."
       },
       "client_id": {
-        "type": "string"
+        "type": "string",
+        "description": "Echo of the target host id (null when no host was targeted)."
       },
       "exit_code": {
-        "type": "integer"
+        "type": "integer",
+        "description": "Exit code (null while running)."
       },
       "stdout": {
-        "type": "string"
+        "type": "string",
+        "description": "Captured standard output text."
       },
       "stderr": {
-        "type": "string"
+        "type": "string",
+        "description": "Captured standard error text."
       },
       "duration_ms": {
-        "type": "integer"
+        "type": "integer",
+        "description": "Operation duration in milliseconds."
       },
       "timed_out": {
-        "type": "boolean"
+        "type": "boolean",
+        "description": "Whether the command hit its time bound."
       },
       "error": {
-        "type": "string"
+        "type": "string",
+        "description": "Machine-readable error code when status is failed."
+      },
+      "retryable": {
+        "type": "boolean",
+        "description": "Whether a failed call may succeed on retry."
       }
     }
   },
