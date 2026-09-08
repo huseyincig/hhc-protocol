@@ -1,0 +1,64 @@
+{
+  "name": "gui_close",
+  "title": "Close Application",
+  "description": "Close a GUI application previously launched via gui_launch, by its reported process id. Only PIDs the agent launched in this boot are accepted; anything else fails with GUI_PID_NOT_MANAGED instead of touching foreign processes. Use for GUI lifecycle cleanup, not for operating-system processes (use process_terminate with a managed handle for those).",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "client_id": {
+        "type": "string",
+        "pattern": "^hhc_[0-9a-f]{64}$",
+        "minLength": 68,
+        "maxLength": 68,
+        "description": "Target HHC client. Absolute routing handle, independent of any connection.",
+        "x-mcp-header": "Client-Id"
+      },
+      "pid": {
+        "type": "integer",
+        "minimum": 1,
+        "description": "Process id previously reported by gui_launch on the same host."
+      }
+    },
+    "required": ["client_id", "pid"]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "description": "completed on success, failed on error."
+      },
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
+      },
+      "client_id": {
+        "type": "string",
+        "description": "Echo of the target host id (null when no host was targeted)."
+      },
+      "pid": {
+        "type": "integer",
+        "description": "Process id that was closed."
+      },
+      "closed": {
+        "type": "boolean",
+        "description": "Whether the close took effect."
+      },
+      "error": {
+        "type": "string",
+        "description": "Machine-readable error code when status is failed."
+      },
+      "retryable": {
+        "type": "boolean",
+        "description": "Whether a failed call may succeed on retry."
+      }
+    }
+  },
+  "annotations": {
+    "readOnlyHint": false,
+    "destructiveHint": false,
+    "idempotentHint": false,
+    "openWorldHint": false
+  }
+}

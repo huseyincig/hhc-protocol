@@ -1,6 +1,6 @@
 {
-  "contract_version": "5.8.3",
-  "fingerprint": "sha256:6b11a7b56514cce53b2ff98f0346b9dca3299a2f1f013edcc1d2d2e5c7000d93",
+  "contract_version": "5.9.0",
+  "fingerprint": "sha256:ec69ec0eba491e3db819181dfcc120033f8f364f17035a91691f84583201df81",
   "tools": [
     "client_list",
     "client_ping",
@@ -48,6 +48,7 @@
     "audit_query",
     "hhc_feedback",
     "gui_launch",
+    "gui_close",
     "shell_exec",
     "privileged_shell_exec"
   ]

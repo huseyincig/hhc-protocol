@@ -1,5 +1,14 @@
 # Changelog
 
+## 5.9.0 — 2026-09-08
+
+MINOR, 49 tools, backward compatible: new `gui_close` tool closes a GUI
+application previously launched via `gui_launch`, by its reported process
+id. Only agent-launched PIDs are accepted (GUI_PID_NOT_MANAGED otherwise),
+so no new privilege is introduced. No renames, removals, or required-field
+changes.
+
+
 ## 5.8.3 — 2026-09-08
 
 PATCH, 48 tools: audit_query documents the action vocabulary (tool calls
