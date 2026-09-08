@@ -1,7 +1,7 @@
 {
   "name": "log_read",
   "title": "Read Logs",
-  "description": "Reads an allowlisted log source from a selected HHC client on demand. Log content is not retained in central SQLite.",
+  "description": "Reads a bounded snapshot of an allowlisted log source (HHC client, MCP server, or tunnel) on demand. Log content is not retained in central SQLite. Use log_follow_* when new log entries must be monitored continuously.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
