@@ -71,6 +71,18 @@
       },
       "error": {
         "type": "string"
+      },
+      "stdout_truncated": {
+        "type": "boolean"
+      },
+      "stdout_dropped_bytes": {
+        "type": "integer"
+      },
+      "stderr_truncated": {
+        "type": "boolean"
+      },
+      "stderr_dropped_bytes": {
+        "type": "integer"
       }
     }
   },

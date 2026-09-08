@@ -17,6 +17,13 @@
       "force": {
         "type": "boolean",
         "default": false
+      },
+      "grace_ms": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 30000,
+        "description": "Grace window before SIGKILL escalation (ignored when force=true).",
+        "default": 5000
       }
     }
   },
@@ -28,6 +35,12 @@
       },
       "error": {
         "type": "string"
+      },
+      "signal": {
+        "type": "string"
+      },
+      "graceful": {
+        "type": "boolean"
       }
     }
   },
