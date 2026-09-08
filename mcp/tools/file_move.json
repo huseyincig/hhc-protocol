@@ -21,15 +21,18 @@
       },
       "source": {
         "type": "string",
-        "maxLength": 4096
+        "maxLength": 4096,
+        "description": "Absolute source path (file or symlink leaf) on the selected client."
       },
       "destination": {
         "type": "string",
-        "maxLength": 4096
+        "maxLength": 4096,
+        "description": "Absolute destination path on the selected client."
       },
       "overwrite": {
         "type": "boolean",
-        "default": false
+        "default": false,
+        "description": "Replace the destination if it already exists."
       }
     }
   },

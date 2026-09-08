@@ -1,7 +1,7 @@
 {
   "name": "file_search",
   "title": "Search Files",
-  "description": "Searches text files below an allowlisted client path with bounded work.",
+  "description": "Searches text files below an allowlisted client path with bounded work. Prefer this over shell grep, find, Select-String, or similar search commands.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
@@ -21,18 +21,21 @@
       },
       "path": {
         "type": "string",
-        "maxLength": 4096
+        "maxLength": 4096,
+        "description": "Absolute path of the directory tree to search on the selected client."
       },
       "query": {
         "type": "string",
         "minLength": 1,
-        "maxLength": 200
+        "maxLength": 200,
+        "description": "Text to search for."
       },
       "max_results": {
         "type": "integer",
         "minimum": 1,
         "maximum": 200,
-        "default": 100
+        "default": 100,
+        "description": "Maximum matches to return."
       }
     }
   },

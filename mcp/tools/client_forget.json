@@ -1,7 +1,7 @@
 {
   "name": "client_forget",
-  "title": "Forget HHC Client",
-  "description": "Removes an offline, idle HHC client and its retained central history.",
+  "title": "Forget Host",
+  "description": "Removes an offline, idle HHC client and its retained central history. This does not uninstall software from the host.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,

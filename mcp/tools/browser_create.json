@@ -1,6 +1,6 @@
 {
   "name": "browser_create",
-  "title": "Create Browser Session",
+  "title": "Start Browser Session",
   "description": "Creates an isolated managed browser session on the client and returns an opaque browser_id handle, so concurrent agents never share cookies, storage, tabs or navigation state. Default mode=managed launches HHC-managed Chromium via Playwright; mode=existing attaches to an operator-provided Chromium over CDP (optional capability, fails with BROWSER_EXISTING_ATTACH_FAILED instead of silently falling back). Pass the handle to every other browser_* tool; omit browser_id to use the ephemeral default context. Prefer HHC browser tools over shell_exec for web/browser automation.",
   "inputSchema": {
     "type": "object",

@@ -1,6 +1,6 @@
 {
   "name": "process_terminate",
-  "title": "Terminate Process",
+  "title": "Stop Process",
   "description": "Graceful SIGTERM first; force=true escalates to hard kill. High-risk on system PIDs: prefer managed handles.",
   "inputSchema": {
     "type": "object",
@@ -16,7 +16,8 @@
       },
       "force": {
         "type": "boolean",
-        "default": false
+        "default": false,
+        "description": "Escalate from graceful SIGTERM to hard kill."
       },
       "grace_ms": {
         "type": "integer",

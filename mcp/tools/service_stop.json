@@ -1,7 +1,7 @@
 {
   "name": "service_stop",
   "title": "Stop Service",
-  "description": "Stops a service by name. Disruptive: confirm intent before calling.",
+  "description": "Stops a service by name. The service is intended to remain stopped; use service_restart when it should run again. Disruptive: confirm intent before calling.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,

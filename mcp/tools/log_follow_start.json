@@ -30,7 +30,8 @@
         "type": "integer",
         "minimum": 1,
         "maximum": 1000,
-        "default": 200
+        "default": 200,
+        "description": "Maximum backlog lines to return with the new handle."
       }
     }
   },

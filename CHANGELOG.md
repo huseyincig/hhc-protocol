@@ -1,5 +1,17 @@
 # Changelog
 
+## 5.8.1 — 2026-09-08
+
+Canonical tool metadata (PATCH, 48 tools, no semantic changes): human-readable
+titles across the surface (e.g. Remote Shell → Run Shell Command, Browser
+Snapshot → Inspect Web Page); tool-selection disambiguation signals
+(dedicated-tool-first pointers, overlap pairs: uninstall/forget,
+write/edit, list/tree, log snapshot/follow, restart/stop); descriptions for
+all 187 input properties; annotation corrections (client_uninstall and
+file_edit are destructive; pure reads are idempotent); unenforced
+"confirmation required" claim on privileged_shell_exec softened to
+recommended (confirm=true + mcp:admin remain enforced where implemented).
+
 ## 5.3.0 — 2026-09-07
 
 New tool `hhc_feedback` (42 total): structured product-issue reporting with server-side enrichment,

@@ -1,7 +1,7 @@
 {
   "name": "process_list",
   "title": "List Processes",
-  "description": "Lists process sessions. scope managed shows HHC-tracked sessions (cheap); scope system shows OS processes and can return large tables \u2014 pass limit for interactive use (truncated=true with total_count when cut).",
+  "description": "Lists process sessions. scope managed shows HHC-tracked sessions (cheap); scope system shows OS processes and can return large tables — pass limit for interactive use (truncated=true with total_count when cut). Prefer this over shell commands such as ps, tasklist, or Get-Process.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
@@ -20,7 +20,8 @@
           "managed",
           "system"
         ],
-        "default": "managed"
+        "default": "managed",
+        "description": "managed lists HHC-tracked sessions (cheap); system lists OS processes."
       },
       "limit": {
         "type": "integer",
@@ -59,7 +60,7 @@
   "annotations": {
     "readOnlyHint": true,
     "destructiveHint": false,
-    "idempotentHint": false,
+    "idempotentHint": true,
     "openWorldHint": false
   }
 }

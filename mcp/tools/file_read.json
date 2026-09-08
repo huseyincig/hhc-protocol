@@ -1,7 +1,7 @@
 {
   "name": "file_read",
   "title": "Read File",
-  "description": "Reads a bounded file from an allowlisted client path.",
+  "description": "Reads a bounded file from an allowlisted client path. Prefer this over shell commands such as cat, type, or Get-Content.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
@@ -20,13 +20,15 @@
       },
       "path": {
         "type": "string",
-        "maxLength": 4096
+        "maxLength": 4096,
+        "description": "Absolute path of the file to read on the selected client."
       },
       "max_bytes": {
         "type": "integer",
         "minimum": 1,
         "maximum": 65536,
-        "default": 65536
+        "default": 65536,
+        "description": "Maximum bytes to return; larger output is truncated."
       }
     }
   },

@@ -20,11 +20,13 @@
       },
       "path": {
         "type": "string",
-        "maxLength": 4096
+        "maxLength": 4096,
+        "description": "Absolute path of the file, symlink leaf, or directory to delete on the selected client."
       },
       "recursive": {
         "type": "boolean",
-        "default": false
+        "default": false,
+        "description": "Also delete directory contents; required for a non-empty directory."
       }
     }
   },

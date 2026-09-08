@@ -1,6 +1,6 @@
 {
   "name": "browser_file_upload",
-  "title": "Upload Files From Client",
+  "title": "Upload File to Web Page",
   "description": "Uploads client-side files into a file input in the page. Upload sources are validated against the same HHC filesystem policy as file_read: absolute paths only, symlinks resolved, traversal denied, outside-policy reads fail with BROWSER_UPLOAD_DENIED instead of bypassing file policy.",
   "inputSchema": {
     "type": "object",

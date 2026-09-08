@@ -1,7 +1,7 @@
 {
   "name": "system_snapshot",
   "title": "System Snapshot",
-  "description": "Returns a compact read-only host system snapshot.",
+  "description": "Returns a compact read-only host system snapshot. Prefer this over shell commands when only host status is needed.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,

@@ -1,6 +1,6 @@
 {
   "name": "shell_exec",
-  "title": "Remote Shell",
+  "title": "Run Shell Command",
   "description": "Execute a shell command on the selected HHC client. Fallback tool: prefer dedicated HHC filesystem, process, service, log, browser and system tools whenever they can perform the requested operation. High-risk operation: executes arbitrary commands on the host. client_id and command are mandatory; commands run bounded with timeouts and truncated output. User confirmation is recommended before execution.",
   "inputSchema": {
     "type": "object",
@@ -19,7 +19,8 @@
         "x-mcp-header": "Client-Id"
       },
       "command": {
-        "type": "string"
+        "type": "string",
+        "description": "Shell command line executed on the selected client."
       },
       "cwd": {
         "type": "string",
@@ -29,7 +30,8 @@
         "type": "integer",
         "minimum": 1,
         "maximum": 3600,
-        "default": 30
+        "default": 30,
+        "description": "Wall-clock bound in seconds for the command."
       }
     }
   },

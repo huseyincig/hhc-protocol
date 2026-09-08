@@ -1,7 +1,7 @@
 {
   "name": "log_follow_read",
-  "title": "Read Followed Log",
-  "description": "Returns log bytes appended since cursor.",
+  "title": "Read New Log Entries",
+  "description": "Returns only new log bytes appended since cursor. Use the handle returned by log_follow_start.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
@@ -17,13 +17,15 @@
       "cursor": {
         "type": "integer",
         "minimum": 0,
-        "default": 0
+        "default": 0,
+        "description": "Byte offset to resume from; pass back the cursor from the previous call."
       },
       "max_bytes": {
         "type": "integer",
         "minimum": 1,
         "maximum": 262144,
-        "default": 65536
+        "default": 65536,
+        "description": "Maximum bytes to return; newer entries remain available."
       }
     }
   },
@@ -50,7 +52,7 @@
   "annotations": {
     "readOnlyHint": true,
     "destructiveHint": false,
-    "idempotentHint": false,
+    "idempotentHint": true,
     "openWorldHint": false
   }
 }

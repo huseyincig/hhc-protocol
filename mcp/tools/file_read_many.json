@@ -1,6 +1,6 @@
 {
   "name": "file_read_many",
-  "title": "Read Many Files",
+  "title": "Read Multiple Files",
   "description": "Reads up to 10 files in one call. More efficient than repeated file_read; prefer it for multi-file review.",
   "inputSchema": {
     "type": "object",
@@ -60,7 +60,7 @@
   "annotations": {
     "readOnlyHint": true,
     "destructiveHint": false,
-    "idempotentHint": false,
+    "idempotentHint": true,
     "openWorldHint": false
   }
 }

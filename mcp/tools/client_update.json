@@ -1,6 +1,6 @@
 {
   "name": "client_update",
-  "title": "Update Client",
+  "title": "Update Host",
   "description": "Centrally triggers an OTA update to the latest certified release on a selected HHC client.",
   "inputSchema": {
     "type": "object",

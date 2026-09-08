@@ -1,6 +1,6 @@
 {
   "name": "hhc_feedback",
-  "title": "Report HHC Issue",
+  "title": "Report HHC Problem",
   "description": "Report a suspected HHC Remote Control product bug, compatibility problem, unexpected tool behavior, performance issue, security concern or usability issue. Do not use for normal command failures, invalid user input, expected permission denials or errors caused by the target operating system/application rather than HHC.",
   "inputSchema": {
     "type": "object",

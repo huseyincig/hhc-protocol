@@ -1,7 +1,7 @@
 {
   "name": "privileged_shell_exec",
-  "title": "Privileged Remote Shell",
-  "description": "Runs an elevated root/administrator command on a supported HHC client via the cryptographic privileged helper daemon. client_id and command are mandatory. Highest-risk operation: grants root/administrator execution. Explicit Admin authorization applies and user confirmation is required before execution.",
+  "title": "Run Admin Command",
+  "description": "Runs an elevated root/administrator command on a supported HHC client via the cryptographic privileged helper daemon. client_id and command are mandatory. Highest-risk operation: grants root/administrator execution. Explicit Admin authorization applies and user confirmation is recommended before execution.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
@@ -19,13 +19,15 @@
         "x-mcp-header": "Client-Id"
       },
       "command": {
-        "type": "string"
+        "type": "string",
+        "description": "Shell command line executed with root/Administrator privileges."
       },
       "timeout_seconds": {
         "type": "integer",
         "minimum": 1,
         "maximum": 300,
-        "default": 30
+        "default": 30,
+        "description": "Wall-clock bound in seconds for the command."
       }
     }
   },

@@ -21,7 +21,8 @@
       "unit": {
         "type": "string",
         "minLength": 1,
-        "maxLength": 200
+        "maxLength": 200,
+        "description": "Service name or unit identifier on the selected client."
       }
     }
   },

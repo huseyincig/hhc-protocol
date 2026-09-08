@@ -20,11 +20,13 @@
       },
       "path": {
         "type": "string",
-        "maxLength": 4096
+        "maxLength": 4096,
+        "description": "Absolute path of the directory to create on the selected client."
       },
       "parents": {
         "type": "boolean",
-        "default": false
+        "default": false,
+        "description": "Create missing parent directories as needed."
       }
     }
   },

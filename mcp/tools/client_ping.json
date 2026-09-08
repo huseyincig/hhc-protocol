@@ -1,7 +1,7 @@
 {
   "name": "client_ping",
-  "title": "Ping Client",
-  "description": "Checks whether the selected HHC client is reachable through the hub and reports session freshness. Read-only; never executes anything on the host.",
+  "title": "Ping Host",
+  "description": "Checks whether the selected HHC client is reachable through the hub and reports session freshness. Read-only; never executes anything on the host. Use for connectivity checks, not full system inspection; prefer system_snapshot when host status is needed.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
@@ -48,7 +48,7 @@
   "annotations": {
     "readOnlyHint": true,
     "destructiveHint": false,
-    "idempotentHint": false,
+    "idempotentHint": true,
     "openWorldHint": false
   }
 }

@@ -27,13 +27,15 @@
         "type": "integer",
         "minimum": 1,
         "maximum": 10,
-        "default": 5
+        "default": 5,
+        "description": "Maximum directory depth to descend."
       },
       "max_entries": {
         "type": "integer",
         "minimum": 1,
         "maximum": 2000,
-        "default": 500
+        "default": 500,
+        "description": "Maximum entries to return before truncation."
       }
     }
   },
@@ -66,7 +68,7 @@
   "annotations": {
     "readOnlyHint": true,
     "destructiveHint": false,
-    "idempotentHint": false,
+    "idempotentHint": true,
     "openWorldHint": false
   }
 }

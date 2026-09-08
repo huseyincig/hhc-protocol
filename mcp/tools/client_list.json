@@ -1,6 +1,6 @@
 {
   "name": "client_list",
-  "title": "List HHC Clients",
+  "title": "List Hosts",
   "description": "Lists enrolled HHC hosts using safe inventory metadata for explicit target discovery.",
   "inputSchema": {
     "type": "object",
@@ -13,13 +13,15 @@
           "online",
           "offline"
         ],
-        "default": "all"
+        "default": "all",
+        "description": "Filter hosts by connectivity state."
       },
       "limit": {
         "type": "integer",
         "minimum": 1,
         "maximum": 200,
-        "default": 100
+        "default": 100,
+        "description": "Maximum hosts to return."
       }
     }
   },

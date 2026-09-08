@@ -37,7 +37,8 @@
         "type": "integer",
         "minimum": 1,
         "maximum": 500,
-        "default": 100
+        "default": 100,
+        "description": "Maximum messages to return."
       },
       "cursor": {
         "type": "integer",

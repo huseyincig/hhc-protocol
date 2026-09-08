@@ -1,7 +1,7 @@
 {
   "name": "file_write",
   "title": "Write File",
-  "description": "Creates, replaces, or appends bounded UTF-8 content on an explicitly selected HHC client after host-policy admission.",
+  "description": "Creates, replaces, or appends bounded UTF-8 content on an explicitly selected HHC client after host-policy admission. Use for whole-content writes; prefer file_edit for precise changes to existing text.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
@@ -22,10 +22,12 @@
       },
       "path": {
         "type": "string",
-        "maxLength": 4096
+        "maxLength": 4096,
+        "description": "Absolute path of the file to write on the selected client."
       },
       "content": {
-        "type": "string"
+        "type": "string",
+        "description": "Full UTF-8 text to write."
       },
       "mode": {
         "type": "string",
@@ -33,22 +35,26 @@
           "create",
           "replace",
           "append"
-        ]
+        ],
+        "description": "create fails if the file exists; replace overwrites; append adds to the end."
       },
       "encoding": {
         "type": "string",
         "enum": [
           "utf8"
         ],
-        "default": "utf8"
+        "default": "utf8",
+        "description": "Content encoding (utf8 only)."
       },
       "expected_sha256": {
         "type": "string",
-        "pattern": "^[0-9a-fA-F]{64}$"
+        "pattern": "^[0-9a-fA-F]{64}$",
+        "description": "Only write if the current file content hashes to this SHA-256 (optimistic concurrency)."
       },
       "create_parents": {
         "type": "boolean",
-        "default": false
+        "default": false,
+        "description": "Create missing parent directories as needed."
       }
     }
   },

@@ -1,7 +1,7 @@
 {
   "name": "file_edit",
-  "title": "Surgical File Edit",
-  "description": "Replaces exactly one occurrence of expected_text with replacement_text. Fails closed when the expectation does not match exactly once, or when expected_sha256/expected_mtime show the file changed underneath (optimistic concurrency). Prefer over read-modify-write cycles.",
+  "title": "Edit File",
+  "description": "Replaces exactly one occurrence of expected_text with replacement_text. Fails closed when the expectation does not match exactly once, or when expected_sha256/expected_mtime show the file changed underneath (optimistic concurrency). Prefer this for targeted changes instead of rewriting the whole file; use file_write when whole-content create/replace/append is intended.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
@@ -62,7 +62,7 @@
   },
   "annotations": {
     "readOnlyHint": false,
-    "destructiveHint": false,
+    "destructiveHint": true,
     "idempotentHint": false,
     "openWorldHint": false
   }

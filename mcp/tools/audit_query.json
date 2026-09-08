@@ -1,6 +1,6 @@
 {
   "name": "audit_query",
-  "title": "Query Audit Trail",
+  "title": "Search Audit Events",
   "description": "Reads the caller tenant audit trail with filters. Read-only introspection over the platform audit chain.",
   "inputSchema": {
     "type": "object",
@@ -22,12 +22,14 @@
         "type": "integer",
         "minimum": 1,
         "maximum": 200,
-        "default": 50
+        "default": 50,
+        "description": "Maximum events to return."
       },
       "offset": {
         "type": "integer",
         "minimum": 0,
-        "default": 0
+        "default": 0,
+        "description": "Number of events to skip for pagination."
       }
     }
   },

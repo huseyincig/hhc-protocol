@@ -1,6 +1,6 @@
 {
   "name": "client_uninstall",
-  "title": "Uninstall Client",
+  "title": "Uninstall HHC Client",
   "description": "Removes the HHC agent from the selected client: stops services/daemons and deletes the runtime. Destructive and irreversible; requires explicit confirm=true and admin scope. Supported where the platform helper exists (Linux today).",
   "inputSchema": {
     "type": "object",
@@ -41,7 +41,7 @@
   },
   "annotations": {
     "readOnlyHint": false,
-    "destructiveHint": false,
+    "destructiveHint": true,
     "idempotentHint": false,
     "openWorldHint": false
   }

@@ -1,6 +1,6 @@
 {
   "name": "client_enroll",
-  "title": "Enroll HHC Client",
+  "title": "Enroll Host",
   "description": "Creates a new HHC client identity and one-time visible enrollment script for a supported platform.",
   "inputSchema": {
     "type": "object",
@@ -16,15 +16,18 @@
           "windows",
           "linux",
           "macos"
-        ]
+        ],
+        "description": "Target platform for the enrollment instructions."
       },
       "name": {
         "type": "string",
-        "maxLength": 128
+        "maxLength": 128,
+        "description": "Display name for the new host."
       },
       "server_url": {
         "type": "string",
-        "maxLength": 2048
+        "maxLength": 2048,
+        "description": "Hub URL the new host will connect to."
       }
     }
   },

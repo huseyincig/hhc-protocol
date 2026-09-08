@@ -1,7 +1,7 @@
 {
   "name": "service_restart",
   "title": "Restart Service",
-  "description": "Restarts a service by name (stop + start). Disruptive: confirm intent before calling.",
+  "description": "Restarts a service by name as one controlled operation. Prefer this over separate stop and start calls when a restart is intended; the service is expected to run again afterwards. Disruptive: confirm intent before calling.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
