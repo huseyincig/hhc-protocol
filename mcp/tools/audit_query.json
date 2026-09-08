@@ -1,14 +1,14 @@
 {
   "name": "audit_query",
   "title": "Search Audit Events",
-  "description": "Reads the caller tenant audit trail with filters. Read-only introspection over the platform audit chain.",
+  "description": "Reads the caller tenant audit trail with filters. Read-only introspection over the platform audit chain. Note: tool executions are recorded under action \"tool.execute\" with the tool name in payload.tool — filter by action \"tool.execute\", not by tool name.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
     "properties": {
       "action": {
         "type": "string",
-        "description": "Filter by action name."
+        "description": "Filter by action name (e.g. \"tool.execute\" for tool calls; the tool name itself lives in payload.tool)."
       },
       "actor": {
         "type": "string",

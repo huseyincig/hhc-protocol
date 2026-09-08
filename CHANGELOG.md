@@ -1,5 +1,12 @@
 # Changelog
 
+## 5.8.3 — 2026-09-08
+
+PATCH, 48 tools: audit_query documents the action vocabulary (tool calls
+are recorded under action "tool.execute" with the tool name in
+payload.tool).
+
+
 ## 5.8.2 — 2026-09-08
 
 PATCH, 48 tools, no renames/removals/required changes:
