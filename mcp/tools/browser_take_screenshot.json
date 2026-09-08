@@ -84,6 +84,13 @@
           "string",
           "null"
         ]
+      },
+      "artifact_path": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Agent-local path of the persisted capture when truncated (fetch via file_read)."
       }
     }
   },
