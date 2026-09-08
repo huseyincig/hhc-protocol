@@ -77,6 +77,13 @@
           "string",
           "null"
         ]
+      },
+      "launch_detail": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "description": "Launch resolution diagnostics (tried paths) when the browser failed to start."
       }
     }
   },
