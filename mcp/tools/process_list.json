@@ -1,7 +1,7 @@
 {
   "name": "process_list",
   "title": "List Processes",
-  "description": "Lists process sessions. scope managed shows HHC-tracked sessions; scope system shows OS processes.",
+  "description": "Lists process sessions. scope managed shows HHC-tracked sessions (cheap); scope system shows OS processes and can return large tables \u2014 pass limit for interactive use (truncated=true with total_count when cut).",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
@@ -21,6 +21,12 @@
           "system"
         ],
         "default": "managed"
+      },
+      "limit": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 5000,
+        "description": "Max rows returned (system scope). Omitted = all rows."
       }
     }
   },
@@ -41,11 +47,17 @@
       },
       "error": {
         "type": "string"
+      },
+      "truncated": {
+        "type": "boolean"
+      },
+      "total_count": {
+        "type": "integer"
       }
     }
   },
   "annotations": {
-    "readOnlyHint": false,
+    "readOnlyHint": true,
     "destructiveHint": false,
     "idempotentHint": false,
     "openWorldHint": false
