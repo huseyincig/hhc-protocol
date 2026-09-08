@@ -1,5 +1,14 @@
 # Changelog
 
+## 5.8.2 — 2026-09-08
+
+PATCH, 48 tools, no renames/removals/required changes:
+- shell_exec documents the platform shell contract (cmd.exe /d /s /c on
+  Windows, /bin/bash -lc elsewhere).
+- service_list records carry `queryable` (service_status policy allowlist
+  discoverability).
+
+
 ## 5.8.1 — 2026-09-08
 
 Canonical tool metadata (PATCH, 48 tools, no semantic changes): human-readable

@@ -1,7 +1,7 @@
 {
   "name": "shell_exec",
   "title": "Run Shell Command",
-  "description": "Execute a shell command on the selected HHC client. Fallback tool: prefer dedicated HHC filesystem, process, service, log, browser and system tools whenever they can perform the requested operation. High-risk operation: executes arbitrary commands on the host. client_id and command are mandatory; commands run bounded with timeouts and truncated output. User confirmation is recommended before execution.",
+  "description": "Execute a shell command on the selected HHC client using the platform shell (cmd.exe with /d /s /c on Windows, /bin/bash with -lc elsewhere). Write nested PowerShell explicitly via powershell.exe; do not assume PowerShell syntax on Windows. Fallback tool: prefer dedicated HHC filesystem, process, service, log, browser and system tools whenever they can perform the requested operation. High-risk operation: executes arbitrary commands on the host. client_id and command are mandatory; commands run bounded with timeouts and truncated output. User confirmation is recommended before execution.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,
@@ -20,7 +20,7 @@
       },
       "command": {
         "type": "string",
-        "description": "Shell command line executed on the selected client."
+        "description": "Shell command line executed on the selected client (cmd.exe on Windows, /bin/bash elsewhere)."
       },
       "cwd": {
         "type": "string",

@@ -33,7 +33,21 @@
       "services": {
         "type": "array",
         "items": {
-          "type": "object"
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Service name as reported by the platform."
+            },
+            "state": {
+              "type": "string",
+              "description": "Platform-reported state (may be unknown)."
+            },
+            "queryable": {
+              "type": "boolean",
+              "description": "Whether service_status accepts this service (policy allowlist)."
+            }
+          }
         },
         "description": "Service records returned."
       },
