@@ -40,10 +40,6 @@
         "type": "string",
         "description": "Echo of the invoked tool name."
       },
-      "total_clients": {
-        "type": "integer",
-        "description": "Total enrolled hosts matching the filter."
-      },
       "clients": {
         "type": "array",
         "items": {

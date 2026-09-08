@@ -76,10 +76,6 @@
         },
         "description": "Directory entries returned."
       },
-      "total_entries": {
-        "type": "integer",
-        "description": "Total entries; may exceed returned entries."
-      },
       "error": {
         "type": "string",
         "description": "Machine-readable error code when status is failed."

@@ -84,10 +84,6 @@
         },
         "description": "Matching lines with file path, line number, and preview."
       },
-      "total_matches": {
-        "type": "integer",
-        "description": "Total matches; may exceed returned matches."
-      },
       "error": {
         "type": "string",
         "description": "Machine-readable error code when status is failed."
