@@ -114,7 +114,24 @@
             },
             "created_at": {
               "type": "string",
-              "description": "Record timestamp."
+              "description": "Record timestamp.",
+              "format": "date-time"
+            },
+            "status": {
+              "type": "string",
+              "description": "Recorded outcome (success/failure)."
+            },
+            "entry_hash": {
+              "type": "string",
+              "description": "Hash-chain entry hash."
+            },
+            "prev_hash": {
+              "type": "string",
+              "description": "Previous chain hash."
+            },
+            "payload": {
+              "type": "object",
+              "description": "Structured event payload (parsed JSON object)."
             }
           }
         },
@@ -146,6 +163,13 @@
       "offset": {
         "type": "integer",
         "description": "Applied page offset."
+      },
+      "client_id": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Echo of the target host id (null: audit is tenant-scoped, not host-scoped)."
       }
     }
   },

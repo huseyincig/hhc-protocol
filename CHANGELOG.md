@@ -1,5 +1,19 @@
 # Changelog
 
+## 5.10.6 — 2026-09-09
+
+PATCH, 51 tools. From-scratch audit thaw (schemas follow verified runtime
+truth, no agent changes needed):
+process_output output flattened (result wrapper + exited/job_id/duration_ms
+never emitted — dropped); log_read output flattened to content +
+lines_returned + duration_ms (lines[]/count never emitted — dropped, source
+gains the client|mcp-server|mcp-tunnel enum); audit_query entries gain
+status/entry_hash/prev_hash/payload (+date-time created_at, top-level
+client_id string|null) while the runtime drops the redundant payload_json
+copy via explicit projection; browser_navigate downloads items typed
+(filename/path/size_bytes/completed|too_large|blocked_policy|failed);
+process_start declares tool + duration_ms.
+
 ## 5.10.5 — 2026-09-09
 
 PATCH, 51 tools. Final P2 polish, no new tools, contract freezes after this:

@@ -119,6 +119,17 @@
       "retryable": {
         "type": "boolean",
         "description": "Whether a failed call may succeed on retry."
+      },
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
+      },
+      "duration_ms": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Execution time in milliseconds."
       }
     }
   },

@@ -58,26 +58,35 @@
       },
       "client_id": {
         "type": "string",
-        "description": "Echo of the target host id (null when no host was targeted)."
+        "description": "Echo of the target host id."
       },
       "source": {
         "type": "string",
+        "enum": [
+          "client",
+          "mcp-server",
+          "mcp-tunnel"
+        ],
         "description": "Log source the result refers to."
       },
-      "lines": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        },
-        "description": "Requested line count the result refers to."
+      "content": {
+        "type": "string",
+        "description": "Bounded log snapshot text."
       },
-      "count": {
+      "lines_returned": {
         "type": "integer",
-        "description": "Lines returned."
+        "description": "Lines contained in content."
       },
       "truncated": {
         "type": "boolean",
         "description": "True when output was cut to bounds."
+      },
+      "duration_ms": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Execution time in milliseconds."
       },
       "error": {
         "type": [

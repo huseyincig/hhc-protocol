@@ -114,7 +114,33 @@
           "downloads": {
             "type": "array",
             "items": {
-              "type": "object"
+              "type": "object",
+              "properties": {
+                "filename": {
+                  "type": "string",
+                  "description": "Downloaded file name."
+                },
+                "path": {
+                  "type": "string",
+                  "description": "Agent-side path (empty when not stored)."
+                },
+                "size_bytes": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "description": "Bytes observed."
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "completed",
+                    "too_large",
+                    "blocked_policy",
+                    "failed"
+                  ],
+                  "description": "Capture outcome."
+                }
+              },
+              "description": "Captured download record."
             },
             "description": "Download records, empty when none."
           }
