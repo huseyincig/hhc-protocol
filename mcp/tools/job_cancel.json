@@ -1,0 +1,67 @@
+{
+  "name": "job_cancel",
+  "title": "Cancel Job",
+  "description": "Requests cancellation of a pending server job (queued, claimed or running). Best-effort and advisory like MCP cancellation itself: the hub stops waiting, but an already-running host process may still finish on the host. Cancelling a terminal job fails with JOB_ALREADY_TERMINAL. Jobs are tenant-scoped: ids from other tenants behave as not found.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "job_id"
+    ],
+    "properties": {
+      "job_id": {
+        "type": "string",
+        "pattern": "^job_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+        "description": "Server job handle returned by an earlier tool call."
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "description": "completed on success, failed on error."
+      },
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
+      },
+      "job_id": {
+        "type": "string",
+        "description": "Echo of the cancelled job handle."
+      },
+      "cancelled": {
+        "type": "boolean",
+        "description": "Whether the job moved to cancelled by this call."
+      },
+      "state": {
+        "type": "string",
+        "enum": [
+          "queued",
+          "claimed",
+          "running",
+          "completed",
+          "failed",
+          "timeout",
+          "cancelled"
+        ],
+        "description": "Lifecycle state after this call."
+      },
+      "error": {
+        "type": "string",
+        "description": "Machine-readable error code when status is failed."
+      },
+      "retryable": {
+        "type": "boolean",
+        "description": "Whether a failed call may succeed on retry."
+      }
+    }
+  },
+  "annotations": {
+    "readOnlyHint": false,
+    "destructiveHint": true,
+    "idempotentHint": false,
+    "openWorldHint": false
+  }
+}

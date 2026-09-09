@@ -61,6 +61,17 @@
           },
           "free_memory_bytes": {
             "type": "integer"
+          },
+          "release": {
+            "type": "string",
+            "description": "OS release string."
+          },
+          "loadavg": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "description": "1/5/15-minute load averages (platforms without load average report zeros or omit)."
           }
         },
         "description": "Snapshot payload."

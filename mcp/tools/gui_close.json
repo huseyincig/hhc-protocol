@@ -20,14 +20,21 @@
         "description": "Process id previously reported by gui_launch on the same host."
       }
     },
-    "required": ["client_id", "pid"]
+    "required": [
+      "client_id",
+      "pid"
+    ]
   },
   "outputSchema": {
     "type": "object",
     "properties": {
       "status": {
         "type": "string",
-        "description": "completed on success, failed on error."
+        "description": "completed on success, failed on error.",
+        "enum": [
+          "completed",
+          "failed"
+        ]
       },
       "tool": {
         "type": "string",

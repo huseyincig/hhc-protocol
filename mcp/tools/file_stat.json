@@ -30,7 +30,11 @@
     "properties": {
       "status": {
         "type": "string",
-        "description": "completed on success, failed on error."
+        "description": "completed on success, failed on error.",
+        "enum": [
+          "completed",
+          "failed"
+        ]
       },
       "client_id": {
         "type": "string",
@@ -45,7 +49,7 @@
           "integer",
           "null"
         ],
-        "description": "Bytes of content returned."
+        "description": "Size of the filesystem entry in bytes."
       },
       "mtime": {
         "type": [

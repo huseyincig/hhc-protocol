@@ -21,6 +21,12 @@
       "service": {
         "type": "string",
         "description": "Service/unit name (service_status uses unit for the same value)."
+      },
+      "unit": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200,
+        "description": "Preferred alias for service (service_status uses unit). Provide exactly one of unit/service."
       }
     }
   },
@@ -29,7 +35,11 @@
     "properties": {
       "status": {
         "type": "string",
-        "description": "completed on success, failed on error."
+        "description": "completed on success, failed on error.",
+        "enum": [
+          "completed",
+          "failed"
+        ]
       },
       "client_id": {
         "type": "string",

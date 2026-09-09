@@ -1,5 +1,16 @@
 # Changelog
 
+## 5.10.0 — 2026-09-09
+
+MINOR, 51 tools, backward compatible: new `job_get` (poll job lifecycle state)
+and `job_cancel` (best-effort advisory cancel) close the async-handle loop;
+`service_start/stop/restart` accept `unit` as preferred alias for `service`.
+Plus PATCH-grade corrections: process_list documents its real flat dual-scope
+shape; system_snapshot gains release/loadavg; client_list top-level client_id
+nullable; 30 envelope statuses narrowed to completed|failed; file_stat
+wording; enforced input bounds; pid/exit_code nullability; service naming
+cross-references.
+
 ## 5.9.1 — 2026-09-09
 
 PATCH, 49 tools, backward compatible (no wire changes; schemas now describe

@@ -6,8 +6,7 @@
     "type": "object",
     "additionalProperties": false,
     "required": [
-      "client_id",
-      "browser_id"
+      "client_id"
     ],
     "properties": {
       "client_id": {
@@ -51,7 +50,11 @@
     "properties": {
       "status": {
         "type": "string",
-        "description": "completed on success, failed on error."
+        "description": "completed on success, failed on error.",
+        "enum": [
+          "completed",
+          "failed"
+        ]
       },
       "client_id": {
         "type": "string",

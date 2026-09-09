@@ -27,11 +27,13 @@
       },
       "expected_text": {
         "type": "string",
-        "description": "Exact current block; must occur exactly once."
+        "description": "Exact current block; must occur exactly once.",
+        "maxLength": 1048576
       },
       "replacement_text": {
         "type": "string",
-        "description": "Replacement block."
+        "description": "Replacement block.",
+        "maxLength": 1048576
       },
       "expected_sha256": {
         "type": "string",
@@ -49,7 +51,11 @@
     "properties": {
       "status": {
         "type": "string",
-        "description": "completed on success, failed on error."
+        "description": "completed on success, failed on error.",
+        "enum": [
+          "completed",
+          "failed"
+        ]
       },
       "client_id": {
         "type": "string",

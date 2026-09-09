@@ -27,7 +27,8 @@
       },
       "content": {
         "type": "string",
-        "description": "Full UTF-8 text to write."
+        "description": "Full UTF-8 text to write.",
+        "maxLength": 1048576
       },
       "mode": {
         "type": "string",

@@ -1,0 +1,82 @@
+{
+  "name": "job_get",
+  "title": "Inspect Job",
+  "description": "Reads the lifecycle state of a server job created by an earlier tool call (for example client_update returns a job_id). Use to poll long-running operations to completion instead of guessing. Read-only; the job_id is correlation-safe to store. Jobs are tenant-scoped: ids from other tenants behave as not found.",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "job_id"
+    ],
+    "properties": {
+      "job_id": {
+        "type": "string",
+        "pattern": "^job_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+        "description": "Server job handle returned by an earlier tool call."
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "type": "string",
+        "description": "completed on success, failed on error."
+      },
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
+      },
+      "job_id": {
+        "type": "string",
+        "description": "Echo of the inspected job handle."
+      },
+      "state": {
+        "type": "string",
+        "enum": [
+          "queued",
+          "claimed",
+          "running",
+          "completed",
+          "failed",
+          "timeout",
+          "cancelled"
+        ],
+        "description": "Current lifecycle state. Terminal states never change again."
+      },
+      "job_tool": {
+        "type": "string",
+        "description": "Tool that created the job."
+      },
+      "client_id": {
+        "type": "string",
+        "description": "Host the job targets."
+      },
+      "created_at": {
+        "type": "string",
+        "description": "Creation timestamp."
+      },
+      "finished_at": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Terminal timestamp, null while pending."
+      },
+      "error": {
+        "type": "string",
+        "description": "Machine-readable error code when status is failed."
+      },
+      "retryable": {
+        "type": "boolean",
+        "description": "Whether a failed call may succeed on retry."
+      }
+    }
+  },
+  "annotations": {
+    "readOnlyHint": true,
+    "destructiveHint": false,
+    "idempotentHint": true,
+    "openWorldHint": false
+  }
+}

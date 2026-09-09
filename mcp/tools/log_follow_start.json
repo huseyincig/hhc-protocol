@@ -24,7 +24,8 @@
       },
       "path": {
         "type": "string",
-        "description": "Explicit log file path (optional)."
+        "description": "Explicit log file path (optional).",
+        "maxLength": 4096
       },
       "max_lines": {
         "type": "integer",
@@ -40,7 +41,11 @@
     "properties": {
       "status": {
         "type": "string",
-        "description": "completed on success, failed on error."
+        "description": "completed on success, failed on error.",
+        "enum": [
+          "completed",
+          "failed"
+        ]
       },
       "handle": {
         "type": "string",

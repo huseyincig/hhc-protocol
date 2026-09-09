@@ -1,6 +1,6 @@
 {
-  "contract_version": "5.9.1",
-  "fingerprint": "sha256:bdd02bfc5721ef200ccc196a8b6f4f02524bf89dceaa7a03167d4713e9a7975f",
+  "contract_version": "5.10.0",
+  "fingerprint": "sha256:4006686cadbbdba9c42b32bbedd552a5aee622c9666217b857c5ab5ef2afc8eb",
   "tools": [
     "client_list",
     "client_ping",
@@ -50,6 +50,8 @@
     "gui_launch",
     "gui_close",
     "shell_exec",
-    "privileged_shell_exec"
+    "privileged_shell_exec",
+    "job_get",
+    "job_cancel"
   ]
 }

@@ -36,83 +36,83 @@
     "properties": {
       "status": {
         "type": "string",
+        "enum": [
+          "completed",
+          "failed"
+        ],
         "description": "completed on success, failed on error."
       },
       "client_id": {
         "type": "string",
         "description": "Echo of the target host id (null when no host was targeted)."
       },
-      "job_id": {
-        "type": "string",
-        "description": "Server job handle for this execution."
-      },
       "tool": {
         "type": "string",
         "description": "Echo of the invoked tool name."
       },
-      "duration_ms": {
-        "type": [
-          "integer",
-          "null"
+      "scope": {
+        "type": "string",
+        "enum": [
+          "managed",
+          "system"
         ],
-        "description": "Execution time in milliseconds."
+        "description": "Scope this result was computed for."
       },
-      "result": {
-        "type": "object",
-        "properties": {
-          "scope": {
-            "type": "string",
-            "enum": [
-              "system"
-            ],
-            "description": "Requested scope the result refers to."
-          },
-          "processes": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "pid": {
-                  "type": "integer",
-                  "minimum": 0,
-                  "description": "OS process id."
-                },
-                "ppid": {
-                  "type": "integer",
-                  "minimum": 0,
-                  "description": "Parent process id."
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Process image name."
-                },
-                "elapsed": {
-                  "type": "string",
-                  "description": "Elapsed time as reported by the OS."
-                },
-                "cpu_percent": {
-                  "type": "number",
-                  "description": "CPU usage percent."
-                },
-                "mem_percent": {
-                  "type": "number",
-                  "description": "Memory usage percent."
-                }
-              }
+      "processes": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "process_id": {
+              "type": "string",
+              "description": "Opaque prc_ handle (managed scope only)."
             },
-            "description": "Process records returned."
-          },
-          "total_count": {
-            "type": "integer",
-            "minimum": 0,
-            "description": "Total records; may exceed returned records."
-          },
-          "truncated": {
-            "type": "boolean",
-            "description": "True when output was cut to bounds."
+            "client_id": {
+              "type": "string",
+              "description": "Owning host (managed scope only)."
+            },
+            "status": {
+              "type": "string",
+              "description": "Session status (managed scope only)."
+            },
+            "pid": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "OS process id (system scope only)."
+            },
+            "ppid": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Parent process id (system scope only)."
+            },
+            "name": {
+              "type": "string",
+              "description": "Process image name (system scope only)."
+            },
+            "elapsed": {
+              "type": "string",
+              "description": "Elapsed time as reported by the OS (system scope only)."
+            },
+            "cpu_percent": {
+              "type": "number",
+              "description": "CPU usage percent (system scope only)."
+            },
+            "mem_percent": {
+              "type": "number",
+              "description": "Memory usage percent (system scope only)."
+            }
           }
         },
-        "description": "Agent payload for this execution."
+        "description": "Process records. managed scope rows carry process_id/client_id/status; system scope rows carry pid/ppid/name/elapsed/cpu_percent/mem_percent."
+      },
+      "total_count": {
+        "type": "integer",
+        "minimum": 0,
+        "description": "Total records; may exceed returned records."
+      },
+      "truncated": {
+        "type": "boolean",
+        "description": "True when output was cut to bounds."
       },
       "error": {
         "type": "string",

@@ -132,6 +132,13 @@
       "retryable": {
         "type": "boolean",
         "description": "Whether a failed call may succeed on retry."
+      },
+      "client_id": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Null for global inventory calls without a host target."
       }
     }
   },
