@@ -20,7 +20,12 @@
       },
       "source": {
         "type": "string",
-        "description": "Named log source (client, mcp-server, mcp-tunnel). Ignored when path is given."
+        "enum": [
+          "client",
+          "mcp-server",
+          "mcp-tunnel"
+        ],
+        "description": "Named log source. Ignored when path is given."
       },
       "path": {
         "type": "string",
@@ -41,23 +46,52 @@
     "properties": {
       "status": {
         "type": "string",
-        "description": "completed on success, failed on error.",
         "enum": [
           "completed",
           "failed"
-        ]
+        ],
+        "description": "completed on success, failed on error."
       },
-      "handle": {
+      "client_id": {
         "type": "string",
-        "description": "Echo of the log-follow handle."
+        "description": "Echo of the target host id (null when no host was targeted)."
       },
-      "content": {
+      "job_id": {
         "type": "string",
-        "description": "Backlog text returned with the new handle."
+        "description": "Server job handle for this execution."
       },
-      "cursor": {
-        "type": "integer",
-        "description": "Resume offset for the next call."
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
+      },
+      "duration_ms": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Execution time in milliseconds."
+      },
+      "result": {
+        "type": "object",
+        "properties": {
+          "handle": {
+            "type": "string",
+            "description": "New log-follow handle."
+          },
+          "content": {
+            "type": "string",
+            "description": "Backlog window text."
+          },
+          "cursor": {
+            "type": "integer",
+            "description": "Resume offset for the next call."
+          },
+          "eof": {
+            "type": "boolean",
+            "description": "Whether the cursor reached end of file."
+          }
+        },
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": [

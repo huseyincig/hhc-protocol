@@ -55,28 +55,53 @@
         ],
         "description": "completed on success, failed on error."
       },
-      "tool": {
-        "type": "string",
-        "description": "Echo of the invoked tool name."
-      },
       "client_id": {
         "type": "string",
         "description": "Echo of the target host id (null when no host was targeted)."
       },
-      "application": {
+      "job_id": {
         "type": "string",
-        "description": "Application the result refers to."
+        "description": "Server job handle for this execution."
       },
-      "pid": {
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
+      },
+      "duration_ms": {
         "type": [
           "integer",
           "null"
         ],
-        "description": "Operating-system PID (null while unknown)."
+        "description": "Execution time in milliseconds."
       },
-      "target": {
-        "type": "string",
-        "description": "Target the result refers to."
+      "result": {
+        "type": "object",
+        "properties": {
+          "application": {
+            "type": "string",
+            "description": "Launched application."
+          },
+          "target": {
+            "type": "string",
+            "description": "Launch target."
+          },
+          "user": {
+            "type": "string",
+            "description": "Session user."
+          },
+          "session_id": {
+            "type": "string",
+            "description": "Broker session id."
+          },
+          "pid": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Operating-system PID (null while unknown)."
+          }
+        },
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": [

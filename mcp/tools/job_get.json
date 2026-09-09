@@ -49,8 +49,11 @@
         "description": "Tool that created the job."
       },
       "client_id": {
-        "type": "string",
-        "description": "Host the job targets."
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Host the job targets (null for host-less jobs)."
       },
       "created_at": {
         "type": "string",
@@ -73,6 +76,13 @@
       "retryable": {
         "type": "boolean",
         "description": "Whether a failed call may succeed on retry."
+      },
+      "duration_ms": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Execution time in milliseconds, null while pending."
       }
     }
   },

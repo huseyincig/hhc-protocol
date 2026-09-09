@@ -37,31 +37,68 @@
         ],
         "description": "completed on success, failed on error."
       },
-      "tool": {
-        "type": "string",
-        "description": "Echo of the invoked tool name."
-      },
       "client_id": {
         "type": "string",
         "description": "Echo of the target host id (null when no host was targeted)."
       },
-      "unit": {
+      "job_id": {
         "type": "string",
-        "description": "Service the result refers to."
+        "description": "Server job handle for this execution."
       },
-      "state": {
+      "tool": {
         "type": "string",
-        "enum": [
-          "running",
-          "stopped",
-          "failed",
-          "unknown"
+        "description": "Echo of the invoked tool name."
+      },
+      "duration_ms": {
+        "type": [
+          "integer",
+          "null"
         ],
-        "description": "Current service state."
+        "description": "Execution time in milliseconds."
       },
-      "details": {
-        "type": "string",
-        "description": "Additional service details."
+      "result": {
+        "type": "object",
+        "properties": {
+          "unit": {
+            "type": "string",
+            "description": "Queried unit name."
+          },
+          "resolved_unit": {
+            "type": "string",
+            "description": "Platform-resolved unit identifier."
+          },
+          "platform": {
+            "type": "string",
+            "description": "linux, darwin or win32."
+          },
+          "active": {
+            "type": "string",
+            "description": "Active state (active, inactive, unknown)."
+          },
+          "enabled": {
+            "type": "string",
+            "description": "Enabled state (enabled, disabled, unknown)."
+          },
+          "active_exit_code": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Probe exit code."
+          },
+          "enabled_exit_code": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Probe exit code (linux only)."
+          },
+          "raw_output": {
+            "type": "string",
+            "description": "Raw probe output (darwin/win32 only)."
+          }
+        },
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": [

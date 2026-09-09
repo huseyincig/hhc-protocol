@@ -17,7 +17,8 @@
       },
       "data": {
         "type": "string",
-        "description": "Bytes appended to stdin (bounded by the 2 MB request body limit)."
+        "description": "Bytes appended to stdin (max 256 KiB per call).",
+        "maxLength": 262144
       }
     }
   },

@@ -43,38 +43,75 @@
         ],
         "description": "completed on success, failed on error."
       },
-      "tool": {
-        "type": "string",
-        "description": "Echo of the invoked tool name."
-      },
       "client_id": {
         "type": "string",
         "description": "Echo of the target host id (null when no host was targeted)."
       },
-      "path": {
+      "job_id": {
         "type": "string",
-        "description": "Path the result refers to."
+        "description": "Server job handle for this execution."
       },
-      "entries": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string"
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
+      },
+      "duration_ms": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Execution time in milliseconds."
+      },
+      "result": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Listed directory path."
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Entry file name."
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "directory",
+                    "file",
+                    "symlink",
+                    "other"
+                  ],
+                  "description": "Entry kind."
+                },
+                "size": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "description": "Size in bytes, null when stat failed."
+                },
+                "mtime": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Modification timestamp, null when stat failed."
+                }
+              }
             },
-            "is_directory": {
-              "type": "boolean"
-            },
-            "size_bytes": {
-              "type": "integer"
-            },
-            "modified_at": {
-              "type": "string"
-            }
+            "description": "Directory entries (one level)."
+          },
+          "truncated": {
+            "type": "boolean",
+            "description": "True when output was cut to bounds."
           }
         },
-        "description": "Directory entries returned."
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": [

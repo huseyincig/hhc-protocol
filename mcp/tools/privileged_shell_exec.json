@@ -21,7 +21,8 @@
       "command": {
         "type": "string",
         "description": "Shell command line executed with root/Administrator privileges.",
-        "minLength": 1
+        "minLength": 1,
+        "maxLength": 65536
       },
       "timeout_seconds": {
         "type": "integer",

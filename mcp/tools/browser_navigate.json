@@ -41,47 +41,85 @@
     "properties": {
       "status": {
         "type": "string",
-        "description": "completed on success, failed on error.",
         "enum": [
           "completed",
           "failed"
-        ]
+        ],
+        "description": "completed on success, failed on error."
       },
-      "browser_id": {
+      "client_id": {
         "type": "string",
-        "description": "Echo of the browser session handle."
+        "description": "Echo of the target host id (null when no host was targeted)."
       },
-      "page_id": {
-        "type": [
-          "string",
-          "null"
-        ],
-        "description": "Handle of the active page."
+      "job_id": {
+        "type": "string",
+        "description": "Server job handle for this execution."
       },
-      "url": {
-        "type": [
-          "string",
-          "null"
-        ],
-        "description": "Current page URL."
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
       },
-      "title": {
-        "type": [
-          "string",
-          "null"
-        ],
-        "description": "Current page title."
-      },
-      "http_status": {
+      "duration_ms": {
         "type": [
           "integer",
           "null"
         ],
-        "description": "HTTP status of the navigation (null when unavailable)."
+        "description": "Execution time in milliseconds."
       },
-      "duration_ms": {
-        "type": "integer",
-        "description": "Operation duration in milliseconds."
+      "result": {
+        "type": "object",
+        "properties": {
+          "browser_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Echo of the browser session handle."
+          },
+          "page_id": {
+            "type": "string",
+            "description": "Stable page handle."
+          },
+          "page_revision": {
+            "type": "integer",
+            "description": "Monotonic page revision."
+          },
+          "mode": {
+            "type": "string",
+            "description": "Navigation mode."
+          },
+          "url": {
+            "type": "string",
+            "description": "Final page URL."
+          },
+          "title": {
+            "type": "string",
+            "description": "Page title."
+          },
+          "http_status": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "HTTP status, null on download-commit/no-response."
+          },
+          "playwright_version": {
+            "type": "string",
+            "description": "Playwright version."
+          },
+          "browser_revision": {
+            "type": "string",
+            "description": "Browser revision."
+          },
+          "downloads": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Download records, empty when none."
+          }
+        },
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": [
@@ -89,13 +127,6 @@
           "null"
         ],
         "description": "Machine-readable error code when status is failed."
-      },
-      "launch_detail": {
-        "type": [
-          "object",
-          "null"
-        ],
-        "description": "Launch resolution diagnostics (tried paths) when the browser failed to start."
       },
       "retryable": {
         "type": "boolean",

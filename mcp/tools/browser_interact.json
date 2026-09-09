@@ -45,7 +45,8 @@
       },
       "target": {
         "type": "string",
-        "description": "Element reference from a browser_snapshot/browser_find result (e.g. \"e17\"), or a CSS selector for backward compatibility. Refs expire on navigation or DOM change; stale refs fail with BROWSER_STALE_TARGET."
+        "description": "Element reference from a browser_snapshot/browser_find result (e.g. \"e17\"), or a CSS selector for backward compatibility. Refs expire on navigation or DOM change; stale refs fail with BROWSER_STALE_TARGET.",
+        "maxLength": 1024
       },
       "selector": {
         "type": "string",
@@ -79,41 +80,78 @@
     "properties": {
       "status": {
         "type": "string",
-        "description": "completed on success, failed on error.",
         "enum": [
           "completed",
           "failed"
-        ]
-      },
-      "browser_id": {
-        "type": "string",
-        "description": "Echo of the browser session handle."
-      },
-      "page_id": {
-        "type": [
-          "string",
-          "null"
         ],
-        "description": "Handle of the active page."
+        "description": "completed on success, failed on error."
       },
-      "page_revision": {
+      "client_id": {
+        "type": "string",
+        "description": "Echo of the target host id (null when no host was targeted)."
+      },
+      "job_id": {
+        "type": "string",
+        "description": "Server job handle for this execution."
+      },
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
+      },
+      "duration_ms": {
         "type": [
           "integer",
           "null"
         ],
-        "description": "Monotonic page revision for staleness detection."
+        "description": "Execution time in milliseconds."
       },
-      "action": {
-        "type": "string",
-        "description": "Page action that was performed."
-      },
-      "ok": {
-        "type": "boolean",
-        "description": "Whether the action took effect."
-      },
-      "duration_ms": {
-        "type": "integer",
-        "description": "Operation duration in milliseconds."
+      "result": {
+        "type": "object",
+        "properties": {
+          "browser_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Echo of the browser session handle."
+          },
+          "page_id": {
+            "type": "string",
+            "description": "Stable page handle (absent for handle_dialog)."
+          },
+          "page_revision": {
+            "type": "integer",
+            "description": "Monotonic page revision."
+          },
+          "action": {
+            "type": "string",
+            "description": "Performed action."
+          },
+          "ok": {
+            "type": "boolean",
+            "description": "Whether the action succeeded."
+          },
+          "target_ref": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Target echo or null."
+          },
+          "playwright_version": {
+            "type": "string",
+            "description": "Playwright version (generic actions only)."
+          },
+          "browser_revision": {
+            "type": "string",
+            "description": "Browser revision (generic actions only)."
+          },
+          "value_preview": {
+            "type": "string",
+            "description": "Redacted evaluate result (evaluate only)."
+          }
+        },
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": [

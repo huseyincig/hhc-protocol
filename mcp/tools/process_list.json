@@ -83,7 +83,7 @@
             "ppid": {
               "type": "integer",
               "minimum": 0,
-              "description": "Parent process id (system scope only)."
+              "description": "Parent process id (system scope only). Absent on win32."
             },
             "name": {
               "type": "string",
@@ -91,15 +91,15 @@
             },
             "elapsed": {
               "type": "string",
-              "description": "Elapsed time as reported by the OS (system scope only)."
+              "description": "Elapsed time as reported by the OS (system scope only). Absent on win32."
             },
             "cpu_percent": {
               "type": "number",
-              "description": "CPU usage percent (system scope only)."
+              "description": "CPU usage percent (system scope only). Absent on win32."
             },
             "mem_percent": {
               "type": "number",
-              "description": "Memory usage percent (system scope only)."
+              "description": "Memory usage percent (system scope only). Absent on win32."
             }
           }
         },

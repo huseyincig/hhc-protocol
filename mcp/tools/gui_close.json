@@ -30,27 +30,44 @@
     "properties": {
       "status": {
         "type": "string",
-        "description": "completed on success, failed on error.",
         "enum": [
           "completed",
           "failed"
-        ]
-      },
-      "tool": {
-        "type": "string",
-        "description": "Echo of the invoked tool name."
+        ],
+        "description": "completed on success, failed on error."
       },
       "client_id": {
         "type": "string",
         "description": "Echo of the target host id (null when no host was targeted)."
       },
-      "pid": {
-        "type": "integer",
-        "description": "Process id that was closed."
+      "job_id": {
+        "type": "string",
+        "description": "Server job handle for this execution."
       },
-      "closed": {
-        "type": "boolean",
-        "description": "Whether the close took effect."
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
+      },
+      "duration_ms": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Execution time in milliseconds."
+      },
+      "result": {
+        "type": "object",
+        "properties": {
+          "pid": {
+            "type": "integer",
+            "description": "Closed process id."
+          },
+          "closed": {
+            "type": "boolean",
+            "description": "Whether the process was closed by this call."
+          }
+        },
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": [

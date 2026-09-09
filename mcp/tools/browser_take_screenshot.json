@@ -24,7 +24,8 @@
       },
       "target": {
         "type": "string",
-        "description": "Element reference from a browser_snapshot/browser_find result (e.g. \"e17\"), or a CSS selector for backward compatibility. Refs expire on navigation or DOM change; stale refs fail with BROWSER_STALE_TARGET."
+        "description": "Element reference from a browser_snapshot/browser_find result (e.g. \"e17\"), or a CSS selector for backward compatibility. Refs expire on navigation or DOM change; stale refs fail with BROWSER_STALE_TARGET.",
+        "maxLength": 1024
       },
       "full_page": {
         "type": "boolean",

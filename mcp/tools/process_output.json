@@ -48,35 +48,87 @@
       "status": {
         "type": "string",
         "enum": [
-          "running",
           "completed",
-          "failed",
-          "unknown_handle"
+          "failed"
         ],
         "description": "completed on success, failed on error."
       },
-      "stdout": {
+      "client_id": {
         "type": "string",
-        "description": "Captured standard output text."
+        "description": "Echo of the target host id (null when no host was targeted)."
       },
-      "stderr": {
+      "job_id": {
         "type": "string",
-        "description": "Captured standard error text."
+        "description": "Server job handle for this execution."
       },
-      "stdout_cursor": {
-        "type": "integer",
-        "description": "Stdout resume offset for the next call."
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
       },
-      "stderr_cursor": {
-        "type": "integer",
-        "description": "Stderr resume offset for the next call."
-      },
-      "exit_code": {
+      "duration_ms": {
         "type": [
           "integer",
           "null"
         ],
-        "description": "Exit code (null while running)."
+        "description": "Execution time in milliseconds."
+      },
+      "result": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "running",
+              "completed",
+              "failed"
+            ],
+            "description": "Session state at read time."
+          },
+          "stdout": {
+            "type": "string",
+            "description": "Stdout window text."
+          },
+          "stderr": {
+            "type": "string",
+            "description": "Stderr window text."
+          },
+          "stdout_cursor": {
+            "type": "integer",
+            "description": "Stdout resume offset for the next call."
+          },
+          "stderr_cursor": {
+            "type": "integer",
+            "description": "Stderr resume offset for the next call."
+          },
+          "stdout_truncated": {
+            "type": "boolean",
+            "description": "Whether stdout was cut."
+          },
+          "stdout_dropped_bytes": {
+            "type": "integer",
+            "description": "Stdout bytes dropped past the stream cap."
+          },
+          "stderr_truncated": {
+            "type": "boolean",
+            "description": "Whether stderr was cut."
+          },
+          "stderr_dropped_bytes": {
+            "type": "integer",
+            "description": "Stderr bytes dropped past the stream cap."
+          },
+          "exited": {
+            "type": "boolean",
+            "description": "Whether the process has exited."
+          },
+          "exit_code": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Exit code, null while running."
+          }
+        },
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": [
@@ -84,22 +136,6 @@
           "null"
         ],
         "description": "Machine-readable error code when status is failed."
-      },
-      "stdout_truncated": {
-        "type": "boolean",
-        "description": "True when stdout was cut to bounds."
-      },
-      "stdout_dropped_bytes": {
-        "type": "integer",
-        "description": "Stdout bytes discarded under the memory cap."
-      },
-      "stderr_truncated": {
-        "type": "boolean",
-        "description": "True when stderr was cut to bounds."
-      },
-      "stderr_dropped_bytes": {
-        "type": "integer",
-        "description": "Stderr bytes discarded under the memory cap."
       },
       "retryable": {
         "type": "boolean",

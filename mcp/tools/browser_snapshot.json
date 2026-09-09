@@ -63,61 +63,91 @@
     "properties": {
       "status": {
         "type": "string",
-        "description": "completed on success, failed on error.",
         "enum": [
           "completed",
           "failed"
-        ]
+        ],
+        "description": "completed on success, failed on error."
       },
-      "browser_id": {
+      "client_id": {
         "type": "string",
-        "description": "Echo of the browser session handle."
+        "description": "Echo of the target host id (null when no host was targeted)."
       },
-      "page_id": {
-        "type": [
-          "string",
-          "null"
-        ],
-        "description": "Handle of the active page."
+      "job_id": {
+        "type": "string",
+        "description": "Server job handle for this execution."
       },
-      "url": {
-        "type": [
-          "string",
-          "null"
-        ],
-        "description": "Current page URL."
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
       },
-      "title": {
-        "type": [
-          "string",
-          "null"
-        ],
-        "description": "Current page title."
-      },
-      "snapshot_id": {
-        "type": [
-          "string",
-          "null"
-        ],
-        "description": "Handle of this snapshot."
-      },
-      "page_revision": {
+      "duration_ms": {
         "type": [
           "integer",
           "null"
         ],
-        "description": "Monotonic page revision for staleness detection."
+        "description": "Execution time in milliseconds."
       },
-      "truncated": {
-        "type": "boolean",
-        "description": "True when output was cut to bounds."
-      },
-      "tree": {
-        "type": [
-          "string",
-          "null"
-        ],
-        "description": "Accessibility tree of the page."
+      "result": {
+        "type": "object",
+        "properties": {
+          "browser_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Echo of the browser session handle."
+          },
+          "page_id": {
+            "type": "string",
+            "description": "Stable page handle."
+          },
+          "type": {
+            "type": "string",
+            "description": "Snapshot type (html, text; absent for accessibility)."
+          },
+          "bytes": {
+            "type": "integer",
+            "description": "Content size (html/text only)."
+          },
+          "truncated": {
+            "type": "boolean",
+            "description": "Whether content was cut."
+          },
+          "content": {
+            "type": "string",
+            "description": "Snapshot content (html/text only)."
+          },
+          "url": {
+            "type": "string",
+            "description": "Page URL (accessibility only)."
+          },
+          "title": {
+            "type": "string",
+            "description": "Page title (accessibility only)."
+          },
+          "snapshot_id": {
+            "type": "string",
+            "description": "Snapshot id (accessibility only)."
+          },
+          "page_revision": {
+            "type": "integer",
+            "description": "Monotonic page revision (accessibility only)."
+          },
+          "tree": {
+            "type": "string",
+            "description": "Accessibility tree (accessibility only)."
+          },
+          "playwright_version": {
+            "type": "string",
+            "description": "Playwright version (accessibility only)."
+          },
+          "browser_revision": {
+            "type": "string",
+            "description": "Browser revision (accessibility only)."
+          }
+        },
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": [

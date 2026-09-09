@@ -50,39 +50,71 @@
         ],
         "description": "completed on success, failed on error."
       },
-      "tool": {
-        "type": "string",
-        "description": "Echo of the invoked tool name."
-      },
       "client_id": {
         "type": "string",
         "description": "Echo of the target host id (null when no host was targeted)."
       },
-      "path": {
+      "job_id": {
         "type": "string",
-        "description": "Path the result refers to."
+        "description": "Server job handle for this execution."
       },
-      "query": {
+      "tool": {
         "type": "string",
-        "description": "Search query the result refers to."
+        "description": "Echo of the invoked tool name."
       },
-      "matches": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "path": {
-              "type": "string"
+      "duration_ms": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Execution time in milliseconds."
+      },
+      "result": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Searched root path."
+          },
+          "query": {
+            "type": "string",
+            "description": "Echo of the search query."
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "Absolute file path."
+                },
+                "line": {
+                  "type": "integer",
+                  "description": "1-based line number of the match."
+                },
+                "preview": {
+                  "type": "string",
+                  "description": "Match context preview."
+                }
+              }
             },
-            "line_number": {
-              "type": "integer"
-            },
-            "preview": {
-              "type": "string"
-            }
+            "description": "Matches found."
+          },
+          "files_searched": {
+            "type": "integer",
+            "description": "Number of files scanned."
+          },
+          "truncated": {
+            "type": "boolean",
+            "description": "True when output was cut to bounds."
+          },
+          "timed_out": {
+            "type": "boolean",
+            "description": "True when the time budget expired."
           }
         },
-        "description": "Matching lines with file path, line number, and preview."
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": [

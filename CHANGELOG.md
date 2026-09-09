@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.10.1 — 2026-09-09
+
+PATCH, 51 tools, no wire changes: documents win32 process_list rows
+(pid+name only), keeping the schema honest per platform.
+
+
 ## 5.10.0 — 2026-09-09
 
 MINOR, 51 tools, backward compatible: new `job_get` (poll job lifecycle state)

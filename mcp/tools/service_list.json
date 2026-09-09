@@ -24,36 +24,57 @@
     "properties": {
       "status": {
         "type": "string",
-        "description": "completed on success, failed on error.",
         "enum": [
           "completed",
           "failed"
-        ]
+        ],
+        "description": "completed on success, failed on error."
       },
       "client_id": {
         "type": "string",
         "description": "Echo of the target host id (null when no host was targeted)."
       },
-      "services": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string",
-              "description": "Service name as reported by the platform."
+      "job_id": {
+        "type": "string",
+        "description": "Server job handle for this execution."
+      },
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
+      },
+      "duration_ms": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Execution time in milliseconds."
+      },
+      "result": {
+        "type": "object",
+        "properties": {
+          "services": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Service name as reported by the platform."
+                },
+                "state": {
+                  "type": "string",
+                  "description": "Platform-reported state (may be unknown)."
+                },
+                "queryable": {
+                  "type": "boolean",
+                  "description": "Whether service_status accepts this service (policy allowlist)."
+                }
+              }
             },
-            "state": {
-              "type": "string",
-              "description": "Platform-reported state (may be unknown)."
-            },
-            "queryable": {
-              "type": "boolean",
-              "description": "Whether service_status accepts this service (policy allowlist)."
-            }
+            "description": "Service records returned."
           }
         },
-        "description": "Service records returned."
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": [
