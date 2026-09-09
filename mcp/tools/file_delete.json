@@ -47,15 +47,45 @@
       },
       "client_id": {
         "type": "string",
-        "description": "Echo of the target host id (null when no host was targeted)."
+        "description": "Echo of the target host id."
       },
-      "path": {
+      "job_id": {
         "type": "string",
-        "description": "Path the result refers to."
+        "description": "Server job handle for this execution."
       },
-      "deleted": {
-        "type": "boolean",
-        "description": "Whether the deletion took effect."
+      "duration_ms": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Execution time in milliseconds."
+      },
+      "result": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Deleted path."
+          },
+          "deleted": {
+            "type": "boolean",
+            "description": "Whether the entry was deleted."
+          },
+          "recursive": {
+            "type": "boolean",
+            "description": "Whether a directory tree was removed."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "file",
+              "directory",
+              "symlink"
+            ],
+            "description": "Kind of entry that was deleted."
+          }
+        },
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": [

@@ -53,19 +53,36 @@
       },
       "client_id": {
         "type": "string",
-        "description": "Echo of the target host id (null when no host was targeted)."
+        "description": "Echo of the target host id."
       },
-      "source": {
+      "job_id": {
         "type": "string",
-        "description": "Source path that was moved."
+        "description": "Server job handle for this execution."
       },
-      "destination": {
-        "type": "string",
-        "description": "Destination path of the move."
+      "duration_ms": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Execution time in milliseconds."
       },
-      "moved": {
-        "type": "boolean",
-        "description": "Whether the move took effect."
+      "result": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Move source path."
+          },
+          "destination": {
+            "type": "string",
+            "description": "Move destination path."
+          },
+          "overwritten": {
+            "type": "boolean",
+            "description": "Whether the destination was overwritten."
+          }
+        },
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": [

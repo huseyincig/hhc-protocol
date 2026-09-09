@@ -76,15 +76,60 @@
       },
       "client_id": {
         "type": "string",
-        "description": "Echo of the target host id (null when no host was targeted)."
+        "description": "Echo of the target host id."
       },
-      "path": {
+      "job_id": {
         "type": "string",
-        "description": "Path the result refers to."
+        "description": "Server job handle for this execution."
       },
-      "bytes_written": {
-        "type": "integer",
-        "description": "Bytes written to the file."
+      "duration_ms": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Execution time in milliseconds."
+      },
+      "result": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Written file path."
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "create",
+              "replace",
+              "append"
+            ],
+            "description": "Write mode that was applied."
+          },
+          "bytes_written": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Bytes written."
+          },
+          "previous_sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "SHA-256 before the write (null for create)."
+          },
+          "expected_sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Caller-supplied expected hash when given."
+          },
+          "sha256": {
+            "type": "string",
+            "description": "SHA-256 after the write."
+          }
+        },
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": [

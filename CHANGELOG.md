@@ -1,5 +1,17 @@
 # Changelog
 
+## 5.10.7 — 2026-09-09
+
+PATCH, 51 tools. From-scratch audit thaw #2 (schemas follow verified
+runtime + agent truth, no agent changes needed):
+remoteMutation family (file_write, file_move, file_delete,
+directory_create) outputs wrapped to {status,tool,client_id,job_id,
+duration_ms,result,error,retryable} with typed result payloads from
+mutation-ops truth (write->{path,mode,bytes_written,previous_sha256,
+expected_sha256,sha256}; move->{source,destination,overwritten};
+delete->{path,deleted,recursive,type}; mkdir->{path,created});
+file_edit declares tool + duration_ms.
+
 ## 5.10.6 — 2026-09-09
 
 PATCH, 51 tools. From-scratch audit thaw (schemas follow verified runtime

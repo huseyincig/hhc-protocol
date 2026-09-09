@@ -47,15 +47,32 @@
       },
       "client_id": {
         "type": "string",
-        "description": "Echo of the target host id (null when no host was targeted)."
+        "description": "Echo of the target host id."
       },
-      "path": {
+      "job_id": {
         "type": "string",
-        "description": "Path the result refers to."
+        "description": "Server job handle for this execution."
       },
-      "created": {
-        "type": "boolean",
-        "description": "Whether the directory was created (false when it already existed)."
+      "duration_ms": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Execution time in milliseconds."
+      },
+      "result": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Directory path."
+          },
+          "created": {
+            "type": "boolean",
+            "description": "False when the directory already existed."
+          }
+        },
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": [
