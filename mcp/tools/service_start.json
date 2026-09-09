@@ -22,7 +22,7 @@
         "type": "string",
         "minLength": 1,
         "maxLength": 200,
-        "description": "Preferred alias for service (service_status uses unit). Provide exactly one of unit/service."
+        "description": "Service unit name on the selected client."
       }
     }
   },
@@ -41,10 +41,6 @@
         "type": "string",
         "description": "Echo of the target host id (null when no host was targeted)."
       },
-      "service": {
-        "type": "string",
-        "description": "Service the result refers to."
-      },
       "error": {
         "type": [
           "string",
@@ -55,6 +51,10 @@
       "retryable": {
         "type": "boolean",
         "description": "Whether a failed call may succeed on retry."
+      },
+      "unit": {
+        "type": "string",
+        "description": "Service unit the result refers to."
       }
     }
   },

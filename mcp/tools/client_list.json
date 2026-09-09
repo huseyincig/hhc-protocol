@@ -98,7 +98,8 @@
                 "string",
                 "null"
               ],
-              "description": "Last contact timestamp."
+              "description": "Last contact timestamp.",
+              "format": "date-time"
             },
             "transport": {
               "type": [

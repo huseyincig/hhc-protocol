@@ -61,14 +61,16 @@
       },
       "created_at": {
         "type": "string",
-        "description": "Creation timestamp."
+        "description": "Creation timestamp.",
+        "format": "date-time"
       },
       "finished_at": {
         "type": [
           "string",
           "null"
         ],
-        "description": "Terminal timestamp, null while pending."
+        "description": "Terminal timestamp, null while pending.",
+        "format": "date-time"
       },
       "error": {
         "type": [

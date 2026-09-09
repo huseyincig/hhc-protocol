@@ -71,7 +71,9 @@
             "items": {
               "type": "number"
             },
-            "description": "1/5/15-minute load averages (platforms without load average report zeros or omit)."
+            "description": "1/5/15-minute load averages (platforms without load average report zeros or omit).",
+            "minItems": 3,
+            "maxItems": 3
           }
         },
         "description": "Snapshot payload."

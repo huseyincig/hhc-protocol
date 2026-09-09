@@ -56,7 +56,8 @@
       },
       "expires_at": {
         "type": "string",
-        "description": "Token expiry timestamp."
+        "description": "Token expiry timestamp.",
+        "format": "date-time"
       },
       "install_commands": {
         "type": "object",

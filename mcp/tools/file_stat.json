@@ -72,7 +72,8 @@
               "string",
               "null"
             ],
-            "description": "Modification timestamp."
+            "description": "Modification timestamp.",
+            "format": "date-time"
           },
           "mode": {
             "type": "string",

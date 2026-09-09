@@ -94,8 +94,12 @@
         "description": "Operating-system PID (null while unknown)."
       },
       "started_at": {
-        "type": "string",
-        "description": "Process start timestamp."
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Process start timestamp.",
+        "format": "date-time"
       },
       "stdout_cursor": {
         "type": "integer",

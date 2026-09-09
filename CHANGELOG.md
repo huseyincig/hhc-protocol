@@ -1,5 +1,15 @@
 # Changelog
 
+## 5.10.5 — 2026-09-09
+
+PATCH, 51 tools. Final P2 polish, no new tools, contract freezes after this:
+service start/stop/restart (+status) unit descriptions drop the stale
+unit/service migration sentence; service start/stop/restart output renames
+`service` to `unit` for input/output symmetry (runtime emits the resolved
+unit); system_snapshot loadavg pinned to exactly 3 items; ISO-8601
+`format: date-time` on last_seen/created_at/finished_at/mtime/expires_at/
+started_at (process_start.started_at also corrected to string|null).
+
 ## 5.10.4 — 2026-09-09
 
 PATCH, 51 tools, no wire changes (schemas now describe the runtime truth):
