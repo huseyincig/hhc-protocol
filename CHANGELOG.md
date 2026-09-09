@@ -1,5 +1,12 @@
 # Changelog
 
+## 5.10.3 — 2026-09-09
+
+PATCH, 51 tools, no wire changes: final three top-level `status` fields
+gain the `completed|failed` enum (`file_stat`, `job_get`, `job_cancel`);
+all 51 tool output envelopes now carry a closed status enum. Browser
+`target` refs were already bounded at 1024 chars.
+
 ## 5.10.2 — 2026-09-09
 
 PATCH, 51 tools, no wire changes: service start/stop/restart `required`
