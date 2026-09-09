@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.10.4 — 2026-09-09
+
+PATCH, 51 tools, no wire changes (schemas now describe the runtime truth):
+`log_follow_read` + `process_output` `client_id` is `string|null`
+(handle-based tools never echo a host id); `hhc_feedback` gains the closed
+`completed|failed` status enum; `process_input.data` maxLength corrected to
+65536 (central enforces INVALID_DATA above 64 KiB per call).
+
 ## 5.10.3 — 2026-09-09
 
 PATCH, 51 tools, no wire changes: final three top-level `status` fields

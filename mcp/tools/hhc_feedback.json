@@ -128,6 +128,14 @@
       "retryable": {
         "type": "boolean",
         "description": "Whether a failed call may succeed on retry."
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "completed",
+          "failed"
+        ],
+        "description": "completed on success, failed on error."
       }
     }
   },
