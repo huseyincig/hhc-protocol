@@ -48,34 +48,85 @@
         "type": "string",
         "description": "completed on success, failed on error."
       },
-      "browser_id": {
+      "client_id": {
         "type": "string",
-        "description": "Echo of the browser session handle."
+        "description": "Echo of the target host id (null when no host was targeted)."
       },
-      "page_id": {
-        "type": [
-          "string",
-          "null"
-        ],
-        "description": "Handle of the active page."
+      "job_id": {
+        "type": "string",
+        "description": "Server job handle for this execution."
       },
-      "page_revision": {
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
+      },
+      "duration_ms": {
         "type": [
           "integer",
           "null"
         ],
-        "description": "Monotonic page revision for staleness detection."
+        "description": "Execution time in milliseconds."
       },
-      "matches": {
-        "type": "array",
-        "items": {
-          "type": "object"
+      "result": {
+        "type": "object",
+        "properties": {
+          "browser_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Echo of the browser session handle."
+          },
+          "matches": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ref": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Element ref usable in browser_interact target."
+                },
+                "line": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "description": "1-based snapshot line number."
+                },
+                "snippet": {
+                  "type": "string",
+                  "description": "Matching lines with surrounding context."
+                }
+              }
+            },
+            "description": "Matches as {ref, line, snippet}. Refs are usable in browser_interact target."
+          },
+          "truncated": {
+            "type": "boolean",
+            "description": "True when output was cut to bounds."
+          },
+          "snapshot_id": {
+            "type": "string",
+            "description": "Snapshot this search ran against."
+          },
+          "page_revision": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Monotonic page revision for staleness detection."
+          },
+          "url": {
+            "type": "string",
+            "description": "Page URL at search time."
+          },
+          "title": {
+            "type": "string",
+            "description": "Page title at search time."
+          }
         },
-        "description": "Matches as {ref, path, snippet}. Refs are usable in browser_interact target."
-      },
-      "truncated": {
-        "type": "boolean",
-        "description": "True when output was cut to bounds."
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": [

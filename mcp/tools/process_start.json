@@ -20,19 +20,24 @@
       },
       "executable": {
         "type": "string",
-        "description": "Binary to execute (no shell metacharacters interpreted)."
+        "description": "Binary to execute (no shell metacharacters interpreted).",
+        "minLength": 1,
+        "maxLength": 1024
       },
       "args": {
         "type": "array",
         "items": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 4096
         },
         "default": [],
-        "description": "Argument vector, passed verbatim."
+        "description": "Argument vector, passed verbatim.",
+        "maxItems": 64
       },
       "cwd": {
         "type": "string",
-        "description": "Absolute working directory."
+        "description": "Absolute working directory.",
+        "maxLength": 4096
       },
       "env": {
         "type": "object",

@@ -43,9 +43,78 @@
       "entries": {
         "type": "array",
         "items": {
-          "type": "object"
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Audit record id."
+            },
+            "tenant_id": {
+              "type": "string",
+              "description": "Owning tenant."
+            },
+            "sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Hash-chain sequence number."
+            },
+            "actor_type": {
+              "type": "string",
+              "description": "Actor class (user, agent, system, api_key, token)."
+            },
+            "actor_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Actor id when known."
+            },
+            "actor_email": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Actor email when known."
+            },
+            "ip_address": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Actor IP when known."
+            },
+            "action": {
+              "type": "string",
+              "description": "Action name."
+            },
+            "resource_type": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Resource class when applicable."
+            },
+            "resource_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Resource id when applicable."
+            },
+            "request_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Correlated request id when known."
+            },
+            "created_at": {
+              "type": "string",
+              "description": "Record timestamp."
+            }
+          }
         },
-        "description": "Directory entries returned."
+        "description": "Audit records returned."
       },
       "total": {
         "type": "integer",
@@ -58,6 +127,18 @@
       "retryable": {
         "type": "boolean",
         "description": "Whether a failed call may succeed on retry."
+      },
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Applied page size."
+      },
+      "offset": {
+        "type": "integer",
+        "description": "Applied page offset."
       }
     }
   },

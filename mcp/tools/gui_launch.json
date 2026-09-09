@@ -68,7 +68,10 @@
         "description": "Application the result refers to."
       },
       "pid": {
-        "type": "integer",
+        "type": [
+          "integer",
+          "null"
+        ],
         "description": "Operating-system PID (null while unknown)."
       },
       "target": {

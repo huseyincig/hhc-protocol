@@ -57,11 +57,11 @@
       },
       "source": {
         "type": "string",
-        "description": "Log source the result refers to."
+        "description": "Source path that was moved."
       },
       "destination": {
         "type": "string",
-        "description": "Destination path the result refers to."
+        "description": "Destination path of the move."
       },
       "moved": {
         "type": "boolean",

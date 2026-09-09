@@ -37,35 +37,49 @@
     "properties": {
       "status": {
         "type": "string",
-        "enum": [
-          "completed",
-          "failed"
-        ],
         "description": "completed on success, failed on error."
-      },
-      "tool": {
-        "type": "string",
-        "description": "Echo of the invoked tool name."
       },
       "client_id": {
         "type": "string",
         "description": "Echo of the target host id (null when no host was targeted)."
       },
-      "path": {
+      "job_id": {
         "type": "string",
-        "description": "Path the result refers to."
+        "description": "Server job handle for this execution."
       },
-      "content": {
+      "tool": {
         "type": "string",
-        "description": "File content read (bounded by max_bytes)."
+        "description": "Echo of the invoked tool name."
       },
-      "size_bytes": {
-        "type": "integer",
-        "description": "Bytes of content returned."
+      "duration_ms": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Execution time in milliseconds."
       },
-      "encoding": {
-        "type": "string",
-        "description": "Content encoding of the returned text."
+      "result": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Resolved absolute path that was read."
+          },
+          "content": {
+            "type": "string",
+            "description": "File content read (bounded by max_bytes)."
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Total file size in bytes."
+          },
+          "truncated": {
+            "type": "boolean",
+            "description": "Whether content was cut at max_bytes."
+          }
+        },
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": "string",

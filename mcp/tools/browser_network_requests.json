@@ -54,20 +54,85 @@
         "type": "string",
         "description": "completed on success, failed on error."
       },
-      "browser_id": {
+      "client_id": {
         "type": "string",
-        "description": "Echo of the browser session handle."
+        "description": "Echo of the target host id (null when no host was targeted)."
       },
-      "cursor": {
-        "type": "integer",
-        "description": "Resume offset for the next call."
+      "job_id": {
+        "type": "string",
+        "description": "Server job handle for this execution."
       },
-      "requests": {
-        "type": "array",
-        "items": {
-          "type": "object"
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
+      },
+      "duration_ms": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Execution time in milliseconds."
+      },
+      "result": {
+        "type": "object",
+        "properties": {
+          "browser_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Echo of the browser session handle."
+          },
+          "cursor": {
+            "type": "integer",
+            "description": "Resume offset for the next call."
+          },
+          "requests": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "seq": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "description": "Request sequence number."
+                },
+                "method": {
+                  "type": "string",
+                  "description": "HTTP method."
+                },
+                "url": {
+                  "type": "string",
+                  "description": "Request URL (sanitized)."
+                },
+                "status": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "description": "HTTP status, null when the request failed."
+                },
+                "resource_type": {
+                  "type": "string",
+                  "description": "Resource type."
+                },
+                "duration_ms": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "description": "Request duration in milliseconds."
+                },
+                "failed": {
+                  "type": "boolean",
+                  "description": "Whether the request failed."
+                }
+              }
+            },
+            "description": "Requests as {seq, method, url, status, resource_type, duration_ms, failed}."
+          }
         },
-        "description": "Requests as {seq, method, url, status, resource_type, duration_ms, failed}."
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": [

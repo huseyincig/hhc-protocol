@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.9.1 — 2026-09-09
+
+PATCH, 49 tools, backward compatible (no wire changes; schemas now describe
+the runtime truth): client_list items use the real inventory fields
+(client_id, hostname, client_version, status, transport, capabilities);
+file_read_many, directory_tree, process_list, browser_find, browser_tabs,
+browser_console_messages, browser_network_requests, browser_file_upload
+results are typed (no generic object[]) and nested under result like the
+wire; audit_query entries are typed audit rows; file_read documents
+bytes/truncated; file_edit gains the enforced 64-hex sha pattern;
+process_start/shell bounds mirror runtime enforcement; service unit/service
+naming cross-referenced; pid/exit_code nullability matches runtime.
+
 ## 5.9.0 — 2026-09-08
 
 MINOR, 49 tools, backward compatible: new `gui_close` tool closes a GUI

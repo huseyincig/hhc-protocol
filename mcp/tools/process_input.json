@@ -17,7 +17,7 @@
       },
       "data": {
         "type": "string",
-        "description": "Bytes appended to stdin."
+        "description": "Bytes appended to stdin (bounded by the 2 MB request body limit)."
       }
     }
   },

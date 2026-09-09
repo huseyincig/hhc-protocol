@@ -50,20 +50,65 @@
         "type": "string",
         "description": "Echo of the target host id (null when no host was targeted)."
       },
-      "path": {
+      "job_id": {
         "type": "string",
-        "description": "Path the result refers to."
+        "description": "Server job handle for this execution."
       },
-      "entries": {
-        "type": "array",
-        "items": {
-          "type": "object"
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
+      },
+      "duration_ms": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Execution time in milliseconds."
+      },
+      "result": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Walked root path."
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "Absolute entry path."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Entry file name."
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "directory",
+                    "file",
+                    "other"
+                  ],
+                  "description": "Entry kind."
+                },
+                "depth": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "description": "Depth relative to the walked root."
+                }
+              }
+            },
+            "description": "Directory entries returned."
+          },
+          "truncated": {
+            "type": "boolean",
+            "description": "True when output was cut to bounds."
+          }
         },
-        "description": "Directory entries returned."
-      },
-      "truncated": {
-        "type": "boolean",
-        "description": "True when output was cut to bounds."
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": "string",

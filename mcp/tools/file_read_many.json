@@ -48,12 +48,59 @@
         "type": "string",
         "description": "Echo of the target host id (null when no host was targeted)."
       },
-      "results": {
-        "type": "array",
-        "items": {
-          "type": "object"
+      "job_id": {
+        "type": "string",
+        "description": "Server job handle for this execution."
+      },
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
+      },
+      "duration_ms": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Execution time in milliseconds."
+      },
+      "result": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "Absolute path that was read (or attempted)."
+                },
+                "content": {
+                  "type": "string",
+                  "description": "UTF-8 content up to max_bytes."
+                },
+                "bytes": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "description": "Total file size in bytes."
+                },
+                "truncated": {
+                  "type": "boolean",
+                  "description": "Whether content was cut at max_bytes."
+                },
+                "error": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Per-file error code, null on success."
+                }
+              }
+            },
+            "description": "Per-file results in request order."
+          }
         },
-        "description": "Per-file results."
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": "string",

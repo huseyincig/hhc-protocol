@@ -45,35 +45,81 @@
         "items": {
           "type": "object",
           "properties": {
-            "id": {
-              "type": "string"
+            "client_id": {
+              "type": "string",
+              "pattern": "^hhc_[0-9a-f]{64}$",
+              "description": "Target HHC client identity."
             },
             "name": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Display name."
+            },
+            "hostname": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Host machine name."
             },
             "platform": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "OS platform (e.g. linux, win32, darwin)."
             },
             "arch": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "CPU architecture."
             },
-            "version": {
-              "type": "string"
+            "client_version": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Running agent version."
             },
-            "is_live": {
-              "type": "boolean"
-            },
-            "profile": {
-              "type": "string"
+            "status": {
+              "type": "string",
+              "enum": [
+                "online",
+                "offline"
+              ],
+              "description": "Current connectivity state."
             },
             "last_seen": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Last contact timestamp."
             },
-            "labels": {
+            "transport": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Live transport name when connected."
+            },
+            "transport_scheme": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Transport scheme when connected."
+            },
+            "capabilities": {
               "type": "array",
               "items": {
                 "type": "string"
-              }
+              },
+              "description": "Tool capabilities advertised by the host."
             }
           }
         },

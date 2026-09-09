@@ -1,7 +1,7 @@
 {
   "name": "process_terminate",
   "title": "Stop Process",
-  "description": "Graceful SIGTERM first; force=true escalates to hard kill. High-risk on system PIDs: prefer managed handles.",
+  "description": "Graceful SIGTERM first; force=true escalates to hard kill. Only processes launched via process_start in this boot can be terminated (opaque prc_ handles); anything else fails with UNKNOWN_HANDLE.",
   "inputSchema": {
     "type": "object",
     "additionalProperties": false,

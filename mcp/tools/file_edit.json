@@ -35,7 +35,8 @@
       },
       "expected_sha256": {
         "type": "string",
-        "description": "Optional optimistic-concurrency guard (hex sha256 of current content)."
+        "description": "Optional optimistic-concurrency guard (hex sha256 of current content).",
+        "pattern": "^[0-9a-fA-F]{64}$"
       },
       "expected_mtime": {
         "type": "string",

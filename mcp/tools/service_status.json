@@ -22,7 +22,7 @@
         "type": "string",
         "minLength": 1,
         "maxLength": 200,
-        "description": "Service name or unit identifier on the selected client."
+        "description": "Service unit name on the selected client (this tool uses unit; service_start/stop/restart use service for the same value)."
       }
     }
   },

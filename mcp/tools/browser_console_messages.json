@@ -55,20 +55,80 @@
         "type": "string",
         "description": "completed on success, failed on error."
       },
-      "browser_id": {
+      "client_id": {
         "type": "string",
-        "description": "Echo of the browser session handle."
+        "description": "Echo of the target host id (null when no host was targeted)."
       },
-      "cursor": {
-        "type": "integer",
-        "description": "Resume offset for the next call."
+      "job_id": {
+        "type": "string",
+        "description": "Server job handle for this execution."
       },
-      "messages": {
-        "type": "array",
-        "items": {
-          "type": "object"
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
+      },
+      "duration_ms": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Execution time in milliseconds."
+      },
+      "result": {
+        "type": "object",
+        "properties": {
+          "browser_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Echo of the browser session handle."
+          },
+          "cursor": {
+            "type": "integer",
+            "description": "Resume offset for the next call."
+          },
+          "messages": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "seq": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "description": "Message sequence number."
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning",
+                    "info",
+                    "debug"
+                  ],
+                  "description": "Console message severity."
+                },
+                "text": {
+                  "type": "string",
+                  "description": "Message text (redacted, bounded)."
+                },
+                "url": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Source URL when known."
+                },
+                "ts": {
+                  "type": "string",
+                  "description": "ISO timestamp."
+                }
+              }
+            },
+            "description": "Messages as {seq, type, text, url, ts}."
+          }
         },
-        "description": "Messages as {seq, type, text, url, ts}."
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": [

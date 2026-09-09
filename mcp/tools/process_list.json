@@ -38,28 +38,85 @@
         "type": "string",
         "description": "completed on success, failed on error."
       },
-      "scope": {
+      "client_id": {
         "type": "string",
-        "description": "Requested scope the result refers to."
+        "description": "Echo of the target host id (null when no host was targeted)."
       },
-      "processes": {
-        "type": "array",
-        "items": {
-          "type": "object"
+      "job_id": {
+        "type": "string",
+        "description": "Server job handle for this execution."
+      },
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
+      },
+      "duration_ms": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Execution time in milliseconds."
+      },
+      "result": {
+        "type": "object",
+        "properties": {
+          "scope": {
+            "type": "string",
+            "enum": [
+              "system"
+            ],
+            "description": "Requested scope the result refers to."
+          },
+          "processes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "pid": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "description": "OS process id."
+                },
+                "ppid": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "description": "Parent process id."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Process image name."
+                },
+                "elapsed": {
+                  "type": "string",
+                  "description": "Elapsed time as reported by the OS."
+                },
+                "cpu_percent": {
+                  "type": "number",
+                  "description": "CPU usage percent."
+                },
+                "mem_percent": {
+                  "type": "number",
+                  "description": "Memory usage percent."
+                }
+              }
+            },
+            "description": "Process records returned."
+          },
+          "total_count": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Total records; may exceed returned records."
+          },
+          "truncated": {
+            "type": "boolean",
+            "description": "True when output was cut to bounds."
+          }
         },
-        "description": "Process records returned."
+        "description": "Agent payload for this execution."
       },
       "error": {
         "type": "string",
         "description": "Machine-readable error code when status is failed."
-      },
-      "truncated": {
-        "type": "boolean",
-        "description": "True when output was cut to bounds."
-      },
-      "total_count": {
-        "type": "integer",
-        "description": "Total records; may exceed returned records."
       },
       "retryable": {
         "type": "boolean",

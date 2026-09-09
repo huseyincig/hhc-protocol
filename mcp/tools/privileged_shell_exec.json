@@ -20,7 +20,8 @@
       },
       "command": {
         "type": "string",
-        "description": "Shell command line executed with root/Administrator privileges."
+        "description": "Shell command line executed with root/Administrator privileges.",
+        "minLength": 1
       },
       "timeout_seconds": {
         "type": "integer",

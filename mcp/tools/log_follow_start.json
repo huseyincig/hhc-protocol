@@ -20,7 +20,7 @@
       },
       "source": {
         "type": "string",
-        "description": "Log source (client log files in v1)."
+        "description": "Named log source (client, mcp-server, mcp-tunnel). Ignored when path is given."
       },
       "path": {
         "type": "string",

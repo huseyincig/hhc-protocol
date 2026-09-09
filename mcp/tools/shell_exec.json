@@ -20,11 +20,14 @@
       },
       "command": {
         "type": "string",
-        "description": "Shell command line executed on the selected client (cmd.exe on Windows, /bin/bash elsewhere)."
+        "description": "Shell command line executed on the selected client (cmd.exe on Windows, /bin/bash elsewhere).",
+        "minLength": 1,
+        "maxLength": 65536
       },
       "cwd": {
         "type": "string",
-        "description": "Optional absolute working directory. When omitted, HHC uses the target host canonical runtime root."
+        "description": "Optional absolute working directory. When omitted, HHC uses the target host canonical runtime root.",
+        "maxLength": 4096
       },
       "timeout_seconds": {
         "type": "integer",
