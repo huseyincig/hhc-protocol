@@ -49,7 +49,10 @@
         "description": "Lifecycle state after this call."
       },
       "error": {
-        "type": "string",
+        "type": [
+          "string",
+          "null"
+        ],
         "description": "Machine-readable error code when status is failed."
       },
       "retryable": {

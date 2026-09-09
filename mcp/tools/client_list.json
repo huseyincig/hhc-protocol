@@ -126,7 +126,10 @@
         "description": "Host inventory records."
       },
       "error": {
-        "type": "string",
+        "type": [
+          "string",
+          "null"
+        ],
         "description": "Machine-readable error code when status is failed."
       },
       "retryable": {

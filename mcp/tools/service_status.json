@@ -64,7 +64,10 @@
         "description": "Additional service details."
       },
       "error": {
-        "type": "string",
+        "type": [
+          "string",
+          "null"
+        ],
         "description": "Machine-readable error code when status is failed."
       },
       "retryable": {

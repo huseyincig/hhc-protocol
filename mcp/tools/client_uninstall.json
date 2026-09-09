@@ -41,7 +41,10 @@
         "description": "Echo of the target host id (null when no host was targeted)."
       },
       "error": {
-        "type": "string",
+        "type": [
+          "string",
+          "null"
+        ],
         "description": "Machine-readable error code when status is failed."
       },
       "retryable": {

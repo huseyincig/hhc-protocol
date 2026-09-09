@@ -28,12 +28,14 @@
       "expected_text": {
         "type": "string",
         "description": "Exact current block; must occur exactly once.",
-        "maxLength": 1048576
+        "maxLength": 65536,
+        "minLength": 1
       },
       "replacement_text": {
         "type": "string",
         "description": "Replacement block.",
-        "maxLength": 1048576
+        "maxLength": 65536,
+        "minLength": 1
       },
       "expected_sha256": {
         "type": "string",
@@ -66,7 +68,10 @@
         "description": "Path the result refers to."
       },
       "error": {
-        "type": "string",
+        "type": [
+          "string",
+          "null"
+        ],
         "description": "Machine-readable error code when status is failed."
       },
       "retryable": {

@@ -85,7 +85,10 @@
         "description": "Matching lines with file path, line number, and preview."
       },
       "error": {
-        "type": "string",
+        "type": [
+          "string",
+          "null"
+        ],
         "description": "Machine-readable error code when status is failed."
       },
       "retryable": {
