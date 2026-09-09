@@ -7,7 +7,7 @@
     "additionalProperties": false,
     "required": [
       "client_id",
-      "service"
+      "unit"
     ],
     "properties": {
       "client_id": {
