@@ -1,5 +1,12 @@
 # Changelog
 
+## 5.10.2 — 2026-09-09
+
+PATCH, 51 tools, no wire changes: service start/stop/restart `required`
+follows canonical `unit` (the `service` fallback stays runtime-accepted
+but is no longer advertised as required).
+
+
 ## 5.10.1 — 2026-09-09
 
 PATCH, 51 tools, no wire changes: documents win32 process_list rows

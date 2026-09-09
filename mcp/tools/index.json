@@ -1,5 +1,5 @@
 {
-  "contract_version": "5.10.1",
+  "contract_version": "5.10.2",
   "fingerprint": "sha256:338e7b6fcb43e32dd7f5bbabdb19d43350b5b573fec2c3c0403f041a9a44a829",
   "tools": [
     "client_list",
