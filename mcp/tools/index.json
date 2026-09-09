@@ -1,6 +1,6 @@
 {
   "contract_version": "5.10.0",
-  "fingerprint": "sha256:4006686cadbbdba9c42b32bbedd552a5aee622c9666217b857c5ab5ef2afc8eb",
+  "fingerprint": "sha256:81519fde01debb1022f1a8ff5883095cde8dfa93ca1a29f295c3a0af36d8243e",
   "tools": [
     "client_list",
     "client_ping",

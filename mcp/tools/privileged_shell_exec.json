@@ -52,7 +52,10 @@
         "description": "Echo of the target host id (null when no host was targeted)."
       },
       "exit_code": {
-        "type": "integer",
+        "type": [
+          "integer",
+          "null"
+        ],
         "description": "Exit code (null while running)."
       },
       "stdout": {
@@ -64,7 +67,10 @@
         "description": "Captured standard error text."
       },
       "duration_ms": {
-        "type": "integer",
+        "type": [
+          "integer",
+          "null"
+        ],
         "description": "Operation duration in milliseconds."
       },
       "elevation_tier": {
@@ -76,7 +82,10 @@
         "description": "Privilege tier granted for the execution."
       },
       "error": {
-        "type": "string",
+        "type": [
+          "string",
+          "null"
+        ],
         "description": "Machine-readable error code when status is failed."
       },
       "retryable": {
