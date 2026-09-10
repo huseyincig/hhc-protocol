@@ -44,7 +44,8 @@
         "additionalProperties": {
           "type": "string"
         },
-        "description": "Extra environment variables."
+        "description": "Extra environment variables.",
+        "maxProperties": 256
       },
       "pty": {
         "type": "boolean",

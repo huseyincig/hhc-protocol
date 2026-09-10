@@ -40,53 +40,32 @@
         ],
         "description": "completed on success, failed on error."
       },
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
+      },
       "client_id": {
         "type": [
           "string",
           "null"
         ],
-        "description": "Echo of the target host id (null when no host was targeted)."
+        "description": "Echo of the target host id (null for handle-scoped calls)."
       },
-      "job_id": {
+      "content": {
         "type": "string",
-        "description": "Server job handle for this execution."
+        "description": "Bounded log window text."
       },
-      "tool": {
-        "type": "string",
-        "description": "Echo of the invoked tool name."
+      "cursor": {
+        "type": "integer",
+        "description": "Resume offset for the next call."
       },
-      "duration_ms": {
-        "type": [
-          "integer",
-          "null"
-        ],
-        "description": "Execution time in milliseconds."
+      "eof": {
+        "type": "boolean",
+        "description": "Whether the read reached end of file."
       },
-      "result": {
-        "type": "object",
-        "properties": {
-          "handle": {
-            "type": "string",
-            "description": "Echo of the log-follow handle."
-          },
-          "content": {
-            "type": "string",
-            "description": "Log window text."
-          },
-          "cursor": {
-            "type": "integer",
-            "description": "Resume offset for the next call."
-          },
-          "eof": {
-            "type": "boolean",
-            "description": "Whether the cursor reached end of file."
-          },
-          "truncatedReset": {
-            "type": "boolean",
-            "description": "Whether the cursor wrapped after truncation."
-          }
-        },
-        "description": "Agent payload for this execution."
+      "truncatedReset": {
+        "type": "boolean",
+        "description": "True when log rotation reset the cursor."
       },
       "error": {
         "type": [

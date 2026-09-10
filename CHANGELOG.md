@@ -1,5 +1,20 @@
 # Changelog
 
+## 5.10.8 — 2026-09-10
+
+PATCH, 51 tools. From-scratch audit thaw #3:
+shell_exec + privileged_shell_exec outputs normalized to the compact
+public envelope (runtime stops returning the raw internal job row;
+central projects {client_id,job_id,status,exit_code,stdout,stderr,
+duration_ms,timed_out,error}; privileged drops ghost elevation_tier).
+process_input/process_terminate/log_follow_start/log_follow_read/
+log_follow_stop flattened to verified runtime truth (start/read carry
+eof; read carries truncatedReset; stop/terminate carry note).
+P2 hardening: process_start env maxProperties 256, audit filter bounds,
+expected_mtime documented dual-format, feedback related_job_id pattern +
+related_request_id bound, process_list managed status enum
+(starting|running|completed|failed|expired, code-derived).
+
 ## 5.10.7 — 2026-09-09
 
 PATCH, 51 tools. From-scratch audit thaw #2 (schemas follow verified

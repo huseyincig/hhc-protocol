@@ -33,11 +33,58 @@
     "properties": {
       "status": {
         "type": "string",
-        "description": "completed on success, failed on error.",
         "enum": [
           "completed",
           "failed"
-        ]
+        ],
+        "description": "completed on success, failed on error."
+      },
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
+      },
+      "client_id": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Echo of the target host id (null for handle-scoped calls)."
+      },
+      "process_id": {
+        "type": "string",
+        "description": "Echo of the process handle."
+      },
+      "signal": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Termination signal used."
+      },
+      "forced": {
+        "type": [
+          "boolean",
+          "null"
+        ],
+        "description": "Whether force-kill was used."
+      },
+      "graceful": {
+        "type": [
+          "boolean",
+          "null"
+        ],
+        "description": "Whether the process exited gracefully."
+      },
+      "terminated": {
+        "type": [
+          "boolean",
+          "null"
+        ],
+        "description": "Whether the process is gone."
+      },
+      "note": {
+        "type": "string",
+        "description": "Informational note (e.g. offline handle release)."
       },
       "error": {
         "type": [
@@ -45,14 +92,6 @@
           "null"
         ],
         "description": "Machine-readable error code when status is failed."
-      },
-      "signal": {
-        "type": "string",
-        "description": "Signal used to terminate."
-      },
-      "graceful": {
-        "type": "boolean",
-        "description": "Whether the process exited gracefully."
       },
       "retryable": {
         "type": "boolean",

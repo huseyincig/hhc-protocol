@@ -74,14 +74,6 @@
         ],
         "description": "Operation duration in milliseconds."
       },
-      "elevation_tier": {
-        "type": "string",
-        "enum": [
-          "root",
-          "administrator"
-        ],
-        "description": "Privilege tier granted for the execution."
-      },
       "error": {
         "type": [
           "string",
@@ -92,6 +84,14 @@
       "retryable": {
         "type": "boolean",
         "description": "Whether a failed call may succeed on retry."
+      },
+      "job_id": {
+        "type": "string",
+        "description": "Server job handle for this execution."
+      },
+      "timed_out": {
+        "type": "boolean",
+        "description": "Whether the command was killed on timeout."
       }
     }
   },

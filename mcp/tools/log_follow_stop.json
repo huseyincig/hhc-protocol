@@ -21,11 +21,26 @@
     "properties": {
       "status": {
         "type": "string",
-        "description": "completed on success, failed on error.",
         "enum": [
           "completed",
           "failed"
-        ]
+        ],
+        "description": "completed on success, failed on error."
+      },
+      "tool": {
+        "type": "string",
+        "description": "Echo of the invoked tool name."
+      },
+      "client_id": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Echo of the target host id (null for handle-scoped calls)."
+      },
+      "note": {
+        "type": "string",
+        "description": "Informational note (e.g. offline handle release)."
       },
       "error": {
         "type": [

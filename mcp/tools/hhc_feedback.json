@@ -61,11 +61,13 @@
       },
       "related_request_id": {
         "type": "string",
-        "description": "Related MCP request id for server-side correlation. Not an authorization token."
+        "description": "Related MCP request id for server-side correlation. Not an authorization token.",
+        "maxLength": 128
       },
       "related_job_id": {
         "type": "string",
-        "description": "Related HHC job id for server-side correlation."
+        "description": "Related HHC job id for server-side correlation.",
+        "pattern": "^job_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
       },
       "related_process_id": {
         "type": "string",

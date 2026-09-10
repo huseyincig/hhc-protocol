@@ -8,15 +8,18 @@
     "properties": {
       "action": {
         "type": "string",
-        "description": "Filter by action name (e.g. \"tool.execute\" for tool calls; the tool name itself lives in payload.tool)."
+        "description": "Filter by action name (e.g. \"tool.execute\" for tool calls; the tool name itself lives in payload.tool).",
+        "maxLength": 128
       },
       "actor": {
         "type": "string",
-        "description": "Filter by actor id/email."
+        "description": "Filter by actor id/email.",
+        "maxLength": 256
       },
       "status": {
         "type": "string",
-        "description": "Filter by record status."
+        "description": "Filter by record status.",
+        "maxLength": 32
       },
       "limit": {
         "type": "integer",

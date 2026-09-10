@@ -44,7 +44,7 @@
       },
       "expected_mtime": {
         "type": "string",
-        "description": "Optional optimistic-concurrency guard (mtime)."
+        "description": "Optional optimistic-concurrency guard: ISO-8601 timestamp or epoch milliseconds (as string); must match the current mtime."
       }
     }
   },

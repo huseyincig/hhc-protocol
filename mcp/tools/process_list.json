@@ -73,7 +73,14 @@
             },
             "status": {
               "type": "string",
-              "description": "Session status (managed scope only)."
+              "description": "Session status (managed scope only).",
+              "enum": [
+                "starting",
+                "running",
+                "completed",
+                "failed",
+                "expired"
+              ]
             },
             "pid": {
               "type": "integer",

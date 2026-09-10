@@ -93,6 +93,10 @@
       "retryable": {
         "type": "boolean",
         "description": "Whether a failed call may succeed on retry."
+      },
+      "job_id": {
+        "type": "string",
+        "description": "Server job handle for this execution."
       }
     }
   },
