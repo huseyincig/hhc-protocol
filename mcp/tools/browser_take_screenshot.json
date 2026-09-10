@@ -39,14 +39,14 @@
           "jpeg"
         ],
         "default": "png",
-        "description": "Image format."
+        "description": "Requested image format. When a PNG capture exceeds max_bytes the agent retries as JPEG — the format actually used is echoed in the result format field."
       },
       "max_bytes": {
         "type": "integer",
         "minimum": 1024,
         "maximum": 262144,
         "default": 131072,
-        "description": "Base64 budget. Oversized captures are downscaled or truncated with truncated=true."
+        "description": "Inline base64 budget (not the artifact file size). Oversized captures retry as JPEG, then persist to artifact_path with base64 emptied and truncated=true; fetch the bytes with file_read."
       }
     }
   },
@@ -74,11 +74,11 @@
       },
       "format": {
         "type": "string",
-        "description": "Image format of the screenshot."
+        "description": "Format actually used (may be jpeg after a PNG-requested fallback)."
       },
       "bytes": {
         "type": "integer",
-        "description": "Size of the captured image in bytes."
+        "description": "Original base64 length before budget enforcement (not the artifact file size)."
       },
       "truncated": {
         "type": "boolean",
@@ -89,7 +89,7 @@
           "string",
           "null"
         ],
-        "description": "Base64-encoded image bytes (null when persisted as artifact)."
+        "description": "Inline image data, or null when over budget (use artifact_path)."
       },
       "error": {
         "type": [
@@ -103,7 +103,7 @@
           "string",
           "null"
         ],
-        "description": "Agent-local path of the persisted capture when truncated (fetch via file_read)."
+        "description": "Agent-side path of the persisted capture when over budget (readable via file_read, swept on session close)."
       },
       "retryable": {
         "type": "boolean",

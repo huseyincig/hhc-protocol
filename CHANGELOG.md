@@ -1,5 +1,12 @@
 # Changelog
 
+## 5.10.10 — 2026-09-10
+
+PATCH, 51 tools, description-only (no schema shape changes):
+browser_take_screenshot documents the real oversize behavior (PNG->JPEG
+retry, inline base64 budget vs artifact file size, bytes = original base64
+length, session-close sweep).
+
 ## 5.10.9 — 2026-09-10
 
 PATCH, 51 tools. P2 hardening close-out: audit_query status filter enum
