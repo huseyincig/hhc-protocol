@@ -1,5 +1,12 @@
 # Changelog
 
+## 5.10.9 — 2026-09-10
+
+PATCH, 51 tools. P2 hardening close-out: audit_query status filter enum
+(success|failure, writer-closed set); process_start env propertyNames
+maxLength 256 (value caps deliberately NOT added — no runtime enforcement
+exists and legit values can be large).
+
 ## 5.10.8 — 2026-09-10
 
 PATCH, 51 tools. From-scratch audit thaw #3:

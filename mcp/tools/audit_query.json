@@ -19,7 +19,11 @@
       "status": {
         "type": "string",
         "description": "Filter by record status.",
-        "maxLength": 32
+        "maxLength": 32,
+        "enum": [
+          "success",
+          "failure"
+        ]
       },
       "limit": {
         "type": "integer",
